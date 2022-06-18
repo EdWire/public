@@ -5,10 +5,10 @@
     "title": "Ed-Fi API (SaaS - Core + TPDM Light)",
     "version": "v5.3"
   },
-  "host": "edfi-api-linux-saas-v5-2-core.edgraph.svc.cluster.local",
+  "host": "api.edgraph.com",
   "basePath": "/edfi/v5.3/saas/core",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "oauth2_client_credentials": {
