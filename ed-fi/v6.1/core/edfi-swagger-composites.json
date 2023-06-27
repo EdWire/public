@@ -86,6 +86,16 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localEducationAgencyId": {
+                    "description": "The identifier assigned to a local education agency.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
+                  },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
                     "items": {
@@ -122,6 +132,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -136,6 +147,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "charterStatusDescriptor": {
+                    "description": "A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
                   },
                   "identificationCodes": {
                     "description": "An unordered collection of educationOrganizationIdentificationCodes. ",
@@ -185,11 +202,44 @@
                     },
                     "type": "array"
                   },
+                  "localEducationAgencyCategoryDescriptor": {
+                    "description": "The category of local education agency/district.",
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "stateEducationAgencyId": {
+                    "description": "The identifier assigned to a state education agency.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "localEducationAgencyId",
+                  "nameOfInstitution",
+                  "localEducationAgencyCategoryDescriptor"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -271,6 +321,16 @@
             "description": "The requested resource was successfully retrieved.",
             "schema": {
               "properties": {
+                "id": {
+                  "description": "",
+                  "type": "string"
+                },
+                "localEducationAgencyId": {
+                  "description": "The identifier assigned to a local education agency.",
+                  "format": "int32",
+                  "x-Ed-Fi-isIdentity": true,
+                  "type": "integer"
+                },
                 "addresses": {
                   "description": "An unordered collection of educationOrganizationAddresses. ",
                   "items": {
@@ -307,6 +367,7 @@
                       },
                       "nameOfCounty": {
                         "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                        "x-nullable": true,
                         "maxLength": 30,
                         "type": "string"
                       }
@@ -321,6 +382,12 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "charterStatusDescriptor": {
+                  "description": "A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school.",
+                  "x-nullable": true,
+                  "maxLength": 306,
+                  "type": "string"
                 },
                 "identificationCodes": {
                   "description": "An unordered collection of educationOrganizationIdentificationCodes. ",
@@ -370,11 +437,44 @@
                   },
                   "type": "array"
                 },
+                "localEducationAgencyCategoryDescriptor": {
+                  "description": "The category of local education agency/district.",
+                  "maxLength": 306,
+                  "type": "string"
+                },
+                "nameOfInstitution": {
+                  "description": "The full, legally accepted name of the institution.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "shortNameOfInstitution": {
+                  "description": "A short name for the institution.",
+                  "x-nullable": true,
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "stateEducationAgencyId": {
+                  "description": "The identifier assigned to a state education agency.",
+                  "format": "int32",
+                  "x-nullable": true,
+                  "type": "integer"
+                },
+                "webSite": {
+                  "description": "The public web site address (URL) for the education organization.",
+                  "x-nullable": true,
+                  "maxLength": 255,
+                  "type": "string"
+                },
                 "_etag": {
                   "description": "A unique system-generated value that identifies the version of the resource.",
                   "type": "string"
                 }
               },
+              "required": [
+                "localEducationAgencyId",
+                "nameOfInstitution",
+                "localEducationAgencyCategoryDescriptor"
+              ],
               "type": "object"
             }
           },
@@ -477,6 +577,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationCategories": {
                     "description": "An unordered collection of educationOrganizationCategories. ",
                     "items": {
@@ -512,6 +616,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "schoolId": {
+                    "description": "The identifier assigned to a school.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
                   },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -549,6 +659,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -631,6 +742,11 @@
                     ],
                     "type": "object"
                   },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
                   "schoolCategories": {
                     "description": "An unordered collection of schoolCategories. ",
                     "items": {
@@ -649,12 +765,32 @@
                     },
                     "type": "array"
                   },
+                  "schoolTypeDescriptor": {
+                    "description": "The type of education institution as classified by its primary focus.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
                 "required": [
+                  "schoolId",
+                  "nameOfInstitution",
                   "educationOrganizationCategories",
                   "gradeLevels"
                 ],
@@ -739,6 +875,10 @@
             "description": "The requested resource was successfully retrieved.",
             "schema": {
               "properties": {
+                "id": {
+                  "description": "",
+                  "type": "string"
+                },
                 "educationOrganizationCategories": {
                   "description": "An unordered collection of educationOrganizationCategories. ",
                   "items": {
@@ -774,6 +914,12 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "schoolId": {
+                  "description": "The identifier assigned to a school.",
+                  "format": "int32",
+                  "x-Ed-Fi-isIdentity": true,
+                  "type": "integer"
                 },
                 "addresses": {
                   "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -811,6 +957,7 @@
                       },
                       "nameOfCounty": {
                         "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                        "x-nullable": true,
                         "maxLength": 30,
                         "type": "string"
                       }
@@ -893,6 +1040,11 @@
                   ],
                   "type": "object"
                 },
+                "nameOfInstitution": {
+                  "description": "The full, legally accepted name of the institution.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
                 "schoolCategories": {
                   "description": "An unordered collection of schoolCategories. ",
                   "items": {
@@ -911,12 +1063,32 @@
                   },
                   "type": "array"
                 },
+                "schoolTypeDescriptor": {
+                  "description": "The type of education institution as classified by its primary focus.",
+                  "x-nullable": true,
+                  "maxLength": 306,
+                  "type": "string"
+                },
+                "shortNameOfInstitution": {
+                  "description": "A short name for the institution.",
+                  "x-nullable": true,
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "webSite": {
+                  "description": "The public web site address (URL) for the education organization.",
+                  "x-nullable": true,
+                  "maxLength": 255,
+                  "type": "string"
+                },
                 "_etag": {
                   "description": "A unique system-generated value that identifies the version of the resource.",
                   "type": "string"
                 }
               },
               "required": [
+                "schoolId",
+                "nameOfInstitution",
                 "educationOrganizationCategories",
                 "gradeLevels"
               ],
@@ -1029,6 +1201,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationCategories": {
                     "description": "An unordered collection of educationOrganizationCategories. ",
                     "items": {
@@ -1064,6 +1240,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "schoolId": {
+                    "description": "The identifier assigned to a school.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
                   },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -1101,6 +1283,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -1183,6 +1366,11 @@
                     ],
                     "type": "object"
                   },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
                   "schoolCategories": {
                     "description": "An unordered collection of schoolCategories. ",
                     "items": {
@@ -1201,12 +1389,32 @@
                     },
                     "type": "array"
                   },
+                  "schoolTypeDescriptor": {
+                    "description": "The type of education institution as classified by its primary focus.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
                 "required": [
+                  "schoolId",
+                  "nameOfInstitution",
                   "educationOrganizationCategories",
                   "gradeLevels"
                 ],
@@ -1321,6 +1529,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationCategories": {
                     "description": "An unordered collection of educationOrganizationCategories. ",
                     "items": {
@@ -1356,6 +1568,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "schoolId": {
+                    "description": "The identifier assigned to a school.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
                   },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -1393,6 +1611,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -1475,6 +1694,11 @@
                     ],
                     "type": "object"
                   },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
                   "schoolCategories": {
                     "description": "An unordered collection of schoolCategories. ",
                     "items": {
@@ -1493,12 +1717,32 @@
                     },
                     "type": "array"
                   },
+                  "schoolTypeDescriptor": {
+                    "description": "The type of education institution as classified by its primary focus.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
                 "required": [
+                  "schoolId",
+                  "nameOfInstitution",
                   "educationOrganizationCategories",
                   "gradeLevels"
                 ],
@@ -1613,6 +1857,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationCategories": {
                     "description": "An unordered collection of educationOrganizationCategories. ",
                     "items": {
@@ -1648,6 +1896,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "schoolId": {
+                    "description": "The identifier assigned to a school.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
                   },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -1685,6 +1939,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -1767,6 +2022,11 @@
                     ],
                     "type": "object"
                   },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
                   "schoolCategories": {
                     "description": "An unordered collection of schoolCategories. ",
                     "items": {
@@ -1785,12 +2045,32 @@
                     },
                     "type": "array"
                   },
+                  "schoolTypeDescriptor": {
+                    "description": "The type of education institution as classified by its primary focus.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
                 "required": [
+                  "schoolId",
+                  "nameOfInstitution",
                   "educationOrganizationCategories",
                   "gradeLevels"
                 ],
@@ -1905,6 +2185,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationCategories": {
                     "description": "An unordered collection of educationOrganizationCategories. ",
                     "items": {
@@ -1940,6 +2224,12 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "schoolId": {
+                    "description": "The identifier assigned to a school.",
+                    "format": "int32",
+                    "x-Ed-Fi-isIdentity": true,
+                    "type": "integer"
                   },
                   "addresses": {
                     "description": "An unordered collection of educationOrganizationAddresses. ",
@@ -1977,6 +2267,7 @@
                         },
                         "nameOfCounty": {
                           "description": "The name of the county, parish, borough, or comparable unit (within a state) in                       'which an address is located.",
+                          "x-nullable": true,
                           "maxLength": 30,
                           "type": "string"
                         }
@@ -2059,6 +2350,11 @@
                     ],
                     "type": "object"
                   },
+                  "nameOfInstitution": {
+                    "description": "The full, legally accepted name of the institution.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
                   "schoolCategories": {
                     "description": "An unordered collection of schoolCategories. ",
                     "items": {
@@ -2077,12 +2373,32 @@
                     },
                     "type": "array"
                   },
+                  "schoolTypeDescriptor": {
+                    "description": "The type of education institution as classified by its primary focus.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "shortNameOfInstitution": {
+                    "description": "A short name for the institution.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "webSite": {
+                    "description": "The public web site address (URL) for the education organization.",
+                    "x-nullable": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
                 "required": [
+                  "schoolId",
+                  "nameOfInstitution",
                   "educationOrganizationCategories",
                   "gradeLevels"
                 ],
@@ -2226,6 +2542,34 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localCourseCode": {
+                    "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "sectionIdentifier": {
+                    "description": "The local identifier assigned to a section.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "academicSubjectDescriptor": {
+                    "description": "The intended major subject area of the course.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "availableCredits": {
+                    "description": "The value of credits or units of value awarded for the completion of a course.",
+                    "format": "double",
+                    "x-nullable": true,
+                    "type": "number"
+                  },
                   "classPeriods": {
                     "description": "An unordered collection of sectionClassPeriods. ",
                     "items": {
@@ -2243,6 +2587,18 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "educationalEnvironmentDescriptor": {
+                    "description": "The setting in which a student receives education and related services.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "localCourseTitle": {
+                    "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
                   },
                   "location": {
                     "properties": {
@@ -2269,6 +2625,12 @@
                       "classroomIdentificationCode"
                     ],
                     "type": "object"
+                  },
+                  "sequenceOfCourse": {
+                    "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
                   },
                   "session": {
                     "properties": {
@@ -2362,6 +2724,7 @@
                         "enrollmentEndDate": {
                           "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -2388,6 +2751,10 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "sectionIdentifier",
+                  "localCourseCode"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -2469,6 +2836,34 @@
             "description": "The requested resource was successfully retrieved.",
             "schema": {
               "properties": {
+                "id": {
+                  "description": "",
+                  "type": "string"
+                },
+                "localCourseCode": {
+                  "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                  "x-Ed-Fi-isIdentity": true,
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                "sectionIdentifier": {
+                  "description": "The local identifier assigned to a section.",
+                  "x-Ed-Fi-isIdentity": true,
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                "academicSubjectDescriptor": {
+                  "description": "The intended major subject area of the course.",
+                  "x-nullable": true,
+                  "maxLength": 306,
+                  "type": "string"
+                },
+                "availableCredits": {
+                  "description": "The value of credits or units of value awarded for the completion of a course.",
+                  "format": "double",
+                  "x-nullable": true,
+                  "type": "number"
+                },
                 "classPeriods": {
                   "description": "An unordered collection of sectionClassPeriods. ",
                   "items": {
@@ -2486,6 +2881,18 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "educationalEnvironmentDescriptor": {
+                  "description": "The setting in which a student receives education and related services.",
+                  "x-nullable": true,
+                  "maxLength": 306,
+                  "type": "string"
+                },
+                "localCourseTitle": {
+                  "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                  "x-nullable": true,
+                  "maxLength": 60,
+                  "type": "string"
                 },
                 "location": {
                   "properties": {
@@ -2512,6 +2919,12 @@
                     "classroomIdentificationCode"
                   ],
                   "type": "object"
+                },
+                "sequenceOfCourse": {
+                  "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                  "format": "int32",
+                  "x-nullable": true,
+                  "type": "integer"
                 },
                 "session": {
                   "properties": {
@@ -2605,6 +3018,7 @@
                       "enrollmentEndDate": {
                         "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                         "format": "date",
+                        "x-nullable": true,
                         "type": "string"
                       },
                       "id": {
@@ -2631,6 +3045,10 @@
                   "type": "string"
                 }
               },
+              "required": [
+                "sectionIdentifier",
+                "localCourseCode"
+              ],
               "type": "object"
             }
           },
@@ -2776,6 +3194,34 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localCourseCode": {
+                    "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "sectionIdentifier": {
+                    "description": "The local identifier assigned to a section.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "academicSubjectDescriptor": {
+                    "description": "The intended major subject area of the course.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "availableCredits": {
+                    "description": "The value of credits or units of value awarded for the completion of a course.",
+                    "format": "double",
+                    "x-nullable": true,
+                    "type": "number"
+                  },
                   "classPeriods": {
                     "description": "An unordered collection of sectionClassPeriods. ",
                     "items": {
@@ -2793,6 +3239,18 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "educationalEnvironmentDescriptor": {
+                    "description": "The setting in which a student receives education and related services.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "localCourseTitle": {
+                    "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
                   },
                   "location": {
                     "properties": {
@@ -2819,6 +3277,12 @@
                       "classroomIdentificationCode"
                     ],
                     "type": "object"
+                  },
+                  "sequenceOfCourse": {
+                    "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
                   },
                   "session": {
                     "properties": {
@@ -2912,6 +3376,7 @@
                         "enrollmentEndDate": {
                           "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -2938,6 +3403,10 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "sectionIdentifier",
+                  "localCourseCode"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -3085,6 +3554,34 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localCourseCode": {
+                    "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "sectionIdentifier": {
+                    "description": "The local identifier assigned to a section.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "academicSubjectDescriptor": {
+                    "description": "The intended major subject area of the course.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "availableCredits": {
+                    "description": "The value of credits or units of value awarded for the completion of a course.",
+                    "format": "double",
+                    "x-nullable": true,
+                    "type": "number"
+                  },
                   "classPeriods": {
                     "description": "An unordered collection of sectionClassPeriods. ",
                     "items": {
@@ -3102,6 +3599,18 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "educationalEnvironmentDescriptor": {
+                    "description": "The setting in which a student receives education and related services.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "localCourseTitle": {
+                    "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
                   },
                   "location": {
                     "properties": {
@@ -3128,6 +3637,12 @@
                       "classroomIdentificationCode"
                     ],
                     "type": "object"
+                  },
+                  "sequenceOfCourse": {
+                    "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
                   },
                   "session": {
                     "properties": {
@@ -3221,6 +3736,7 @@
                         "enrollmentEndDate": {
                           "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -3247,6 +3763,10 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "sectionIdentifier",
+                  "localCourseCode"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -3394,6 +3914,34 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localCourseCode": {
+                    "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "sectionIdentifier": {
+                    "description": "The local identifier assigned to a section.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "academicSubjectDescriptor": {
+                    "description": "The intended major subject area of the course.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "availableCredits": {
+                    "description": "The value of credits or units of value awarded for the completion of a course.",
+                    "format": "double",
+                    "x-nullable": true,
+                    "type": "number"
+                  },
                   "classPeriods": {
                     "description": "An unordered collection of sectionClassPeriods. ",
                     "items": {
@@ -3411,6 +3959,18 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "educationalEnvironmentDescriptor": {
+                    "description": "The setting in which a student receives education and related services.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "localCourseTitle": {
+                    "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
                   },
                   "location": {
                     "properties": {
@@ -3437,6 +3997,12 @@
                       "classroomIdentificationCode"
                     ],
                     "type": "object"
+                  },
+                  "sequenceOfCourse": {
+                    "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
                   },
                   "session": {
                     "properties": {
@@ -3530,6 +4096,7 @@
                         "enrollmentEndDate": {
                           "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -3556,6 +4123,10 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "sectionIdentifier",
+                  "localCourseCode"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -3703,6 +4274,34 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "localCourseCode": {
+                    "description": "The local code assigned by the School that identifies the course offering provided for the instruction of students.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "sectionIdentifier": {
+                    "description": "The local identifier assigned to a section.",
+                    "x-Ed-Fi-isIdentity": true,
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "academicSubjectDescriptor": {
+                    "description": "The intended major subject area of the course.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "availableCredits": {
+                    "description": "The value of credits or units of value awarded for the completion of a course.",
+                    "format": "double",
+                    "x-nullable": true,
+                    "type": "number"
+                  },
                   "classPeriods": {
                     "description": "An unordered collection of sectionClassPeriods. ",
                     "items": {
@@ -3720,6 +4319,18 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "educationalEnvironmentDescriptor": {
+                    "description": "The setting in which a student receives education and related services.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "localCourseTitle": {
+                    "description": "The descriptive name given to a course of study offered in the school, if different from the course title.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
                   },
                   "location": {
                     "properties": {
@@ -3746,6 +4357,12 @@
                       "classroomIdentificationCode"
                     ],
                     "type": "object"
+                  },
+                  "sequenceOfCourse": {
+                    "description": "When a section is part of a sequence of parts for a course, the number of the sequence. If the course has only one part, the value of this section attribute should be 1.",
+                    "format": "int32",
+                    "x-nullable": true,
+                    "type": "integer"
                   },
                   "session": {
                     "properties": {
@@ -3839,6 +4456,7 @@
                         "enrollmentEndDate": {
                           "description": "Month, day, and year of the withdrawal or exit of the student from the section.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -3865,6 +4483,10 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "sectionIdentifier",
+                  "localCourseCode"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -3960,6 +4582,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationAssignments": {
                     "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                     "items": {
@@ -3972,6 +4598,7 @@
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -4015,6 +4642,16 @@
                     },
                     "type": "array"
                   },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "hispanicLatinoEthnicity": {
+                    "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                    "x-nullable": true,
+                    "type": "boolean"
+                  },
                   "identificationCodes": {
                     "description": "An unordered collection of staffIdentificationCodes. ",
                     "items": {
@@ -4057,6 +4694,23 @@
                     },
                     "type": "array"
                   },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "description": "The login ID for the user; used for security access control interface.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "races": {
                     "description": "An unordered collection of staffRaces. ",
                     "items": {
@@ -4075,6 +4729,17 @@
                     },
                     "type": "array"
                   },
+                  "sexDescriptor": {
+                    "description": "A person's gender.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "staffUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a staff.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "telephones": {
                     "description": "An unordered collection of staffTelephones. ",
                     "items": {
@@ -4088,6 +4753,7 @@
                         "orderOfPriority": {
                           "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                           "format": "int32",
+                          "x-nullable": true,
                           "type": "integer"
                         },
                         "telephoneNumber": {
@@ -4110,6 +4776,11 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "staffUniqueId",
+                  "firstName",
+                  "lastSurname"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -4191,6 +4862,10 @@
             "description": "The requested resource was successfully retrieved.",
             "schema": {
               "properties": {
+                "id": {
+                  "description": "",
+                  "type": "string"
+                },
                 "educationOrganizationAssignments": {
                   "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                   "items": {
@@ -4203,6 +4878,7 @@
                       },
                       "educationOrganizationType": {
                         "description": "",
+                        "x-nullable": true,
                         "maxLength": 128,
                         "type": "string"
                       },
@@ -4246,6 +4922,16 @@
                   },
                   "type": "array"
                 },
+                "firstName": {
+                  "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "hispanicLatinoEthnicity": {
+                  "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                  "x-nullable": true,
+                  "type": "boolean"
+                },
                 "identificationCodes": {
                   "description": "An unordered collection of staffIdentificationCodes. ",
                   "items": {
@@ -4288,6 +4974,23 @@
                   },
                   "type": "array"
                 },
+                "lastSurname": {
+                  "description": "The name borne in common by members of a family.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "loginId": {
+                  "description": "The login ID for the user; used for security access control interface.",
+                  "x-nullable": true,
+                  "maxLength": 60,
+                  "type": "string"
+                },
+                "personalTitlePrefix": {
+                  "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                  "x-nullable": true,
+                  "maxLength": 30,
+                  "type": "string"
+                },
                 "races": {
                   "description": "An unordered collection of staffRaces. ",
                   "items": {
@@ -4306,6 +5009,17 @@
                   },
                   "type": "array"
                 },
+                "sexDescriptor": {
+                  "description": "A person's gender.",
+                  "x-nullable": true,
+                  "maxLength": 306,
+                  "type": "string"
+                },
+                "staffUniqueId": {
+                  "description": "A unique alphanumeric code assigned to a staff.",
+                  "maxLength": 32,
+                  "type": "string"
+                },
                 "telephones": {
                   "description": "An unordered collection of staffTelephones. ",
                   "items": {
@@ -4319,6 +5033,7 @@
                       "orderOfPriority": {
                         "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                         "format": "int32",
+                        "x-nullable": true,
                         "type": "integer"
                       },
                       "telephoneNumber": {
@@ -4341,6 +5056,11 @@
                   "type": "string"
                 }
               },
+              "required": [
+                "staffUniqueId",
+                "firstName",
+                "lastSurname"
+              ],
               "type": "object"
             }
           },
@@ -4441,6 +5161,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationAssignments": {
                     "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                     "items": {
@@ -4453,6 +5177,7 @@
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -4496,6 +5221,16 @@
                     },
                     "type": "array"
                   },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "hispanicLatinoEthnicity": {
+                    "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                    "x-nullable": true,
+                    "type": "boolean"
+                  },
                   "identificationCodes": {
                     "description": "An unordered collection of staffIdentificationCodes. ",
                     "items": {
@@ -4538,6 +5273,23 @@
                     },
                     "type": "array"
                   },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "description": "The login ID for the user; used for security access control interface.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "races": {
                     "description": "An unordered collection of staffRaces. ",
                     "items": {
@@ -4556,6 +5308,17 @@
                     },
                     "type": "array"
                   },
+                  "sexDescriptor": {
+                    "description": "A person's gender.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "staffUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a staff.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "telephones": {
                     "description": "An unordered collection of staffTelephones. ",
                     "items": {
@@ -4569,6 +5332,7 @@
                         "orderOfPriority": {
                           "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                           "format": "int32",
+                          "x-nullable": true,
                           "type": "integer"
                         },
                         "telephoneNumber": {
@@ -4591,6 +5355,11 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "staffUniqueId",
+                  "firstName",
+                  "lastSurname"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -4693,6 +5462,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationAssignments": {
                     "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                     "items": {
@@ -4705,6 +5478,7 @@
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -4748,6 +5522,16 @@
                     },
                     "type": "array"
                   },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "hispanicLatinoEthnicity": {
+                    "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                    "x-nullable": true,
+                    "type": "boolean"
+                  },
                   "identificationCodes": {
                     "description": "An unordered collection of staffIdentificationCodes. ",
                     "items": {
@@ -4790,6 +5574,23 @@
                     },
                     "type": "array"
                   },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "description": "The login ID for the user; used for security access control interface.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "races": {
                     "description": "An unordered collection of staffRaces. ",
                     "items": {
@@ -4808,6 +5609,17 @@
                     },
                     "type": "array"
                   },
+                  "sexDescriptor": {
+                    "description": "A person's gender.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "staffUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a staff.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "telephones": {
                     "description": "An unordered collection of staffTelephones. ",
                     "items": {
@@ -4821,6 +5633,7 @@
                         "orderOfPriority": {
                           "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                           "format": "int32",
+                          "x-nullable": true,
                           "type": "integer"
                         },
                         "telephoneNumber": {
@@ -4843,6 +5656,11 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "staffUniqueId",
+                  "firstName",
+                  "lastSurname"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -4945,6 +5763,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationAssignments": {
                     "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                     "items": {
@@ -4957,6 +5779,7 @@
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -5000,6 +5823,16 @@
                     },
                     "type": "array"
                   },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "hispanicLatinoEthnicity": {
+                    "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                    "x-nullable": true,
+                    "type": "boolean"
+                  },
                   "identificationCodes": {
                     "description": "An unordered collection of staffIdentificationCodes. ",
                     "items": {
@@ -5042,6 +5875,23 @@
                     },
                     "type": "array"
                   },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "description": "The login ID for the user; used for security access control interface.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "races": {
                     "description": "An unordered collection of staffRaces. ",
                     "items": {
@@ -5060,6 +5910,17 @@
                     },
                     "type": "array"
                   },
+                  "sexDescriptor": {
+                    "description": "A person's gender.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "staffUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a staff.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "telephones": {
                     "description": "An unordered collection of staffTelephones. ",
                     "items": {
@@ -5073,6 +5934,7 @@
                         "orderOfPriority": {
                           "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                           "format": "int32",
+                          "x-nullable": true,
                           "type": "integer"
                         },
                         "telephoneNumber": {
@@ -5095,6 +5957,11 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "staffUniqueId",
+                  "firstName",
+                  "lastSurname"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -5197,6 +6064,10 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
                   "educationOrganizationAssignments": {
                     "description": "An unordered collection of staffEducationOrganizationAssignmentAssociations. ",
                     "items": {
@@ -5209,6 +6080,7 @@
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -5252,6 +6124,16 @@
                     },
                     "type": "array"
                   },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "hispanicLatinoEthnicity": {
+                    "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                    "x-nullable": true,
+                    "type": "boolean"
+                  },
                   "identificationCodes": {
                     "description": "An unordered collection of staffIdentificationCodes. ",
                     "items": {
@@ -5294,6 +6176,23 @@
                     },
                     "type": "array"
                   },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "description": "The login ID for the user; used for security access control interface.",
+                    "x-nullable": true,
+                    "maxLength": 60,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "races": {
                     "description": "An unordered collection of staffRaces. ",
                     "items": {
@@ -5312,6 +6211,17 @@
                     },
                     "type": "array"
                   },
+                  "sexDescriptor": {
+                    "description": "A person's gender.",
+                    "x-nullable": true,
+                    "maxLength": 306,
+                    "type": "string"
+                  },
+                  "staffUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a staff.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "telephones": {
                     "description": "An unordered collection of staffTelephones. ",
                     "items": {
@@ -5325,6 +6235,7 @@
                         "orderOfPriority": {
                           "description": "The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.",
                           "format": "int32",
+                          "x-nullable": true,
                           "type": "integer"
                         },
                         "telephoneNumber": {
@@ -5347,6 +6258,11 @@
                     "type": "string"
                   }
                 },
+                "required": [
+                  "staffUniqueId",
+                  "firstName",
+                  "lastSurname"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -5442,12 +6358,44 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "birthDate": {
+                    "description": "The month, day, and year on which an individual was born.",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "studentDemographics": {
                     "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                     "items": {
                       "properties": {
                         "loginId": {
                           "description": "The login ID for the user; used for security access control interface.",
+                          "x-nullable": true,
                           "maxLength": 60,
                           "type": "string"
                         },
@@ -5458,10 +6406,12 @@
                         },
                         "hispanicLatinoEthnicity": {
                           "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                          "x-nullable": true,
                           "type": "boolean"
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -5534,6 +6484,7 @@
                         "enrollmentEndDate": {
                           "description": "The recorded exit or withdraw date for the student.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -5563,11 +6514,22 @@
                     },
                     "type": "array"
                   },
+                  "studentUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a student.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "studentUniqueId",
+                  "firstName",
+                  "lastSurname",
+                  "birthDate"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -5649,12 +6611,44 @@
             "description": "The requested resource was successfully retrieved.",
             "schema": {
               "properties": {
+                "id": {
+                  "description": "",
+                  "type": "string"
+                },
+                "birthDate": {
+                  "description": "The month, day, and year on which an individual was born.",
+                  "format": "date",
+                  "type": "string"
+                },
+                "firstName": {
+                  "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "lastSurname": {
+                  "description": "The name borne in common by members of a family.",
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "middleName": {
+                  "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                  "x-nullable": true,
+                  "maxLength": 75,
+                  "type": "string"
+                },
+                "personalTitlePrefix": {
+                  "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                  "x-nullable": true,
+                  "maxLength": 30,
+                  "type": "string"
+                },
                 "studentDemographics": {
                   "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                   "items": {
                     "properties": {
                       "loginId": {
                         "description": "The login ID for the user; used for security access control interface.",
+                        "x-nullable": true,
                         "maxLength": 60,
                         "type": "string"
                       },
@@ -5665,10 +6659,12 @@
                       },
                       "hispanicLatinoEthnicity": {
                         "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                        "x-nullable": true,
                         "type": "boolean"
                       },
                       "educationOrganizationType": {
                         "description": "",
+                        "x-nullable": true,
                         "maxLength": 128,
                         "type": "string"
                       },
@@ -5741,6 +6737,7 @@
                       "enrollmentEndDate": {
                         "description": "The recorded exit or withdraw date for the student.",
                         "format": "date",
+                        "x-nullable": true,
                         "type": "string"
                       },
                       "id": {
@@ -5770,11 +6767,22 @@
                   },
                   "type": "array"
                 },
+                "studentUniqueId": {
+                  "description": "A unique alphanumeric code assigned to a student.",
+                  "maxLength": 32,
+                  "type": "string"
+                },
                 "_etag": {
                   "description": "A unique system-generated value that identifies the version of the resource.",
                   "type": "string"
                 }
               },
+              "required": [
+                "studentUniqueId",
+                "firstName",
+                "lastSurname",
+                "birthDate"
+              ],
               "type": "object"
             }
           },
@@ -5875,12 +6883,44 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "birthDate": {
+                    "description": "The month, day, and year on which an individual was born.",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "studentDemographics": {
                     "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                     "items": {
                       "properties": {
                         "loginId": {
                           "description": "The login ID for the user; used for security access control interface.",
+                          "x-nullable": true,
                           "maxLength": 60,
                           "type": "string"
                         },
@@ -5891,10 +6931,12 @@
                         },
                         "hispanicLatinoEthnicity": {
                           "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                          "x-nullable": true,
                           "type": "boolean"
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -5967,6 +7009,7 @@
                         "enrollmentEndDate": {
                           "description": "The recorded exit or withdraw date for the student.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -5996,11 +7039,22 @@
                     },
                     "type": "array"
                   },
+                  "studentUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a student.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "studentUniqueId",
+                  "firstName",
+                  "lastSurname",
+                  "birthDate"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -6103,12 +7157,44 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "birthDate": {
+                    "description": "The month, day, and year on which an individual was born.",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "studentDemographics": {
                     "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                     "items": {
                       "properties": {
                         "loginId": {
                           "description": "The login ID for the user; used for security access control interface.",
+                          "x-nullable": true,
                           "maxLength": 60,
                           "type": "string"
                         },
@@ -6119,10 +7205,12 @@
                         },
                         "hispanicLatinoEthnicity": {
                           "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                          "x-nullable": true,
                           "type": "boolean"
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -6195,6 +7283,7 @@
                         "enrollmentEndDate": {
                           "description": "The recorded exit or withdraw date for the student.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -6224,11 +7313,22 @@
                     },
                     "type": "array"
                   },
+                  "studentUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a student.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "studentUniqueId",
+                  "firstName",
+                  "lastSurname",
+                  "birthDate"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -6331,12 +7431,44 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "birthDate": {
+                    "description": "The month, day, and year on which an individual was born.",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "studentDemographics": {
                     "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                     "items": {
                       "properties": {
                         "loginId": {
                           "description": "The login ID for the user; used for security access control interface.",
+                          "x-nullable": true,
                           "maxLength": 60,
                           "type": "string"
                         },
@@ -6347,10 +7479,12 @@
                         },
                         "hispanicLatinoEthnicity": {
                           "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                          "x-nullable": true,
                           "type": "boolean"
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -6423,6 +7557,7 @@
                         "enrollmentEndDate": {
                           "description": "The recorded exit or withdraw date for the student.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -6452,11 +7587,22 @@
                     },
                     "type": "array"
                   },
+                  "studentUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a student.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "studentUniqueId",
+                  "firstName",
+                  "lastSurname",
+                  "birthDate"
+                ],
                 "type": "object"
               },
               "type": "array"
@@ -6559,12 +7705,44 @@
             "schema": {
               "items": {
                 "properties": {
+                  "id": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "birthDate": {
+                    "description": "The month, day, and year on which an individual was born.",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "lastSurname": {
+                    "description": "The name borne in common by members of a family.",
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "A secondary name given to an individual at birth, baptism, or during another naming ceremony.",
+                    "x-nullable": true,
+                    "maxLength": 75,
+                    "type": "string"
+                  },
+                  "personalTitlePrefix": {
+                    "description": "A prefix used to denote the title, degree, position, or seniority of the individual.",
+                    "x-nullable": true,
+                    "maxLength": 30,
+                    "type": "string"
+                  },
                   "studentDemographics": {
                     "description": "An unordered collection of studentEducationOrganizationAssociations. ",
                     "items": {
                       "properties": {
                         "loginId": {
                           "description": "The login ID for the user; used for security access control interface.",
+                          "x-nullable": true,
                           "maxLength": 60,
                           "type": "string"
                         },
@@ -6575,10 +7753,12 @@
                         },
                         "hispanicLatinoEthnicity": {
                           "description": "An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, \"Spanish origin,\" can be used in addition to \"Hispanic or Latino.\"",
+                          "x-nullable": true,
                           "type": "boolean"
                         },
                         "educationOrganizationType": {
                           "description": "",
+                          "x-nullable": true,
                           "maxLength": 128,
                           "type": "string"
                         },
@@ -6651,6 +7831,7 @@
                         "enrollmentEndDate": {
                           "description": "The recorded exit or withdraw date for the student.",
                           "format": "date",
+                          "x-nullable": true,
                           "type": "string"
                         },
                         "id": {
@@ -6680,11 +7861,22 @@
                     },
                     "type": "array"
                   },
+                  "studentUniqueId": {
+                    "description": "A unique alphanumeric code assigned to a student.",
+                    "maxLength": 32,
+                    "type": "string"
+                  },
                   "_etag": {
                     "description": "A unique system-generated value that identifies the version of the resource.",
                     "type": "string"
                   }
                 },
+                "required": [
+                  "studentUniqueId",
+                  "firstName",
+                  "lastSurname",
+                  "birthDate"
+                ],
                 "type": "object"
               },
               "type": "array"
