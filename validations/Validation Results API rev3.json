@@ -1,0 +1,567 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Validation Results API rev3",
+    "version": "0.3.0"
+  },
+  "externalDocs": {
+    "description": "Click here for Validation Results API rev2",
+    "url": "https://github.com/EdWire/public/blob/main/validations/Validations%20API%20Design%20rev2.md"
+  },
+  "tags": [
+    {
+      "name": "Rules"
+    },
+    {
+      "name": "Jobs"
+    }
+  ],
+  "paths": {
+    "/rules": {
+      "get": {
+        "tags": [
+          "Rules"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rules/{ruleId}": {
+      "get": {
+        "tags": [
+          "Rules"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ruleId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Job"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Job"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Run"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/latest": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Run"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/{runId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Run"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/{runId}/records": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Record"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/{runId}/rules": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/{runId}/rules/{ruleId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/ruleId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobs/{jobId}/runs/{runId}/rules/{ruleId}/records": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/jobId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/ruleId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested resource was successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Record"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "offset": {
+        "name": "offset",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Indicates how many items should be skipped before returning results.",
+          "default": 0
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Indicates how many items should be skipped before returning results.",
+          "default": 25,
+          "minimum": 0,
+          "maximum": 1000
+        }
+      },
+      "ruleId": {
+        "in": "path",
+        "name": "ruleId",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/uuid"
+        }
+      },
+      "jobId": {
+        "in": "path",
+        "name": "jobId",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/uuid"
+        }
+      },
+      "runId": {
+        "in": "path",
+        "name": "runId",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/uuid"
+        }
+      }
+    },
+    "schemas": {
+      "uuid": {
+        "type": "string",
+        "format": "uuid",
+        "description": "A UUID that uniquely identifies the resource.",
+        "examples": [
+          "00000000-0000-0000-0000-000000000000"
+        ]
+      },
+      "Rule": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "$ref": "#/components/schemas/uuid"
+          },
+          "runId": {
+            "$ref": "#/components/schemas/uuid",
+            "description": "The ID of the Run that created this Rule snapshot."
+          },
+          "source": {
+            "type": "string",
+            "description": "The source or origin of the Rule. This value would be set by the application or server."
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name of the Rule."
+          },
+          "description": {
+            "type": "string",
+            "description": "Non-structured text about the details used in the evaluation of the Rule."
+          },
+          "shortDescription": {
+            "type": "string",
+            "description": "A more brief version of the \"description\" property."
+          },
+          "resolution": {
+            "type": "string",
+            "description": "Information about how to resolve an issue related to the Rule. It could be a detailed explanation or a link to an external resource."
+          },
+          "status": {
+            "type": "string",
+            "description": "The current status of the Rule. Examples: UnderAnalysis, Active, Inactive, Deprecated, or other standardized value."
+          },
+          "category": {
+            "type": "string",
+            "description": "The category for the type of Rule. The value is a \"/\" separated list indicating the path to the Rule.",
+            "examples": [
+              "Students/Demographics",
+              "Students/Attendance",
+              "Education/Special Education"
+            ]
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "The total count of Records produced by this Rule."
+          },
+          "exceptionCount": {
+            "type": "integer",
+            "description": "The total count of invalid Records produced by this Rule."
+          }
+        }
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "$ref": "#/components/schemas/uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name of the Job."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the Job. Examples are: Inactive, Active."
+          },
+          "latestRun": {
+            "type": "object",
+            "description": "The latest Run of this Job.",
+            "properties": {
+              "runId": {
+                "$ref": "#/components/schemas/uuid"
+              },
+              "startDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The UTC time when the Run started.",
+                "examples": [
+                  "2025-01-15T12:00:00.000Z"
+                ]
+              },
+              "endDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The UTC time when the Run ended.",
+                "examples": [
+                  "2025-01-15T12:00:00.000Z"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "description": "The status of the Run. Examples are: Queued, Running, Completed, Cancelled, Error or other standardized value."
+              }
+            }
+          }
+        }
+      },
+      "Run": {
+        "type": "object",
+        "properties": {
+          "runId": {
+            "$ref": "#/components/schemas/uuid"
+          },
+          "startDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The UTC time when the Run started.",
+            "examples": [
+              "2025-01-15T12:00:00.000Z"
+            ]
+          },
+          "endDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The UTC time when the Run ended.",
+            "examples": [
+              "2025-01-15T12:00:00.000Z"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the Run. Examples are: Queued, Running, Completed, Cancelled, Error or other standardized value."
+          },
+          "host": {
+            "type": "string",
+            "description": "The name of the host or ODS that was evaluated in this Run."
+          },
+          "validationEngine": {
+            "type": "string",
+            "description": "A reference to the validation engine that was responsible for this Run."
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "The total count of Records produced by this Run."
+          },
+          "exceptionCount": {
+            "type": "integer",
+            "description": "The total count of invalid Records produced by this Run."
+          }
+        }
+      },
+      "Record": {
+        "type": "object",
+        "properties": {
+          "recordId": {
+            "$ref": "#/components/schemas/uuid"
+          },
+          "runId": {
+            "$ref": "#/components/schemas/uuid",
+            "description": "The ID of the Run that generated this result."
+          },
+          "ruleId": {
+            "$ref": "#/components/schemas/uuid",
+            "description": "The ID of the Rule used by the validation Run. If a validation Rule caused multiple results (e.g. multiple students with the same condition) they would share this ID. This is part of the validation result signature."
+          },
+          "resourceId": {
+            "$ref": "#/components/schemas/uuid",
+            "description": "The unique identifier in the ODS that is used to reference a specific resource. Examples are EducationOrganizationId, StudentUniqueId or StaffUniqueId . This is part of the validation result signature."
+          },
+          "resourceType": {
+            "type": "string",
+            "description": "The resource associated with the Rule. This is de-normalized from the Rule, every instance of a given RuleID will have the same Ed-Fi resource. Examples are EducationOrganization, Student or Staff."
+          },
+          "resourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL where the resource can be located."
+          },
+          "namespace": {
+            "type": "string",
+            "description": "Along with EducationOrganization, this can be used for limiting what systems can consume the validation results and routing the validation results within the consuming system. IMPORTANT: Should this be in the response? Since it will most likely only be used by the server for security purposes (e.g. comparison with claims in auth token)."
+          },
+          "additionalContext": {
+            "type": "object",
+            "description": "Includes the details that were used in the evaluation of the validation Rule."
+          }
+        }
+      }
+    }
+  }
+}
