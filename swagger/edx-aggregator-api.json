@@ -61,6 +61,37 @@
         }
       }
     },
+    "/tenants/{tenantId}/datahealthchecksedfi/{year}/odshealthcheckdistrictdetails": {
+      "get": {
+        "tags": [
+          "DataHealth"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/ed-fi/descriptors": {
       "get": {
         "tags": [
@@ -1711,6 +1742,138 @@
         }
       }
     },
+    "/tenants/{tenantId}/edfiadmin/v2/{year}/applicationrequests": {
+      "post": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalCreateApplicationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalCreateApplicationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalCreateApplicationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/v2/{year}/applicationrequests/resetcredentials": {
+      "put": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tenants/{tenantId}/edfiadmin/applications": {
       "get": {
         "tags": [
@@ -3089,6 +3252,9 @@
           "resourcesUrl": {
             "type": "string",
             "nullable": true
+          },
+          "isDefaultOdsInstance": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
