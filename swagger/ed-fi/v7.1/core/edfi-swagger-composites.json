@@ -6,7 +6,7 @@
     "version": "v7.1"
   },
   "host": "api.edgraph.com",
-  "basePath": "/edfi/v7.1/saas/core",
+  "basePath": "/edfi/v7.1/ds5/saas/core",
   "schemes": [
     "https"
   ],
@@ -297,7 +297,7 @@
         },
         "security": [
           {
-            "5e97d79b-2dc7-4914-8dbd-ac1e6fe4acf5_oauth2_client_credentials": []
+            "oauth2_client_credentials": []
           }
         ]
       }
@@ -898,7 +898,7 @@
         },
         "security": [
           {
-            "5e97d79b-2dc7-4914-8dbd-ac1e6fe4acf5_oauth2_client_credentials": []
+            "oauth2_client_credentials": []
           }
         ]
       }

@@ -6,7 +6,7 @@
     "version": "v7.1"
   },
   "host": "api.edgraph.com",
-  "basePath": "/edfi/v7.1/saas/core",
+  "basePath": "/edfi/v7.1/ds5/saas/core",
   "schemes": [
     "https"
   ],
