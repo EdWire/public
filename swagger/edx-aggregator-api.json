@@ -1477,6 +1477,15 @@
             }
           },
           {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 2024
+            }
+          },
+          {
             "name": "tenantId",
             "in": "path",
             "required": true,
@@ -1578,17 +1587,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               }
             }
@@ -1750,7 +1759,7 @@
         }
       }
     },
-    "/tenants/{tenantId}/edfiadmin/v2/{year}/applicationrequests": {
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}/applicationrequests": {
       "post": {
         "tags": [
           "TenantsEdFiAdmin"
@@ -1765,7 +1774,7 @@
             }
           },
           {
-            "name": "year",
+            "name": "instanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1798,17 +1807,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               }
             }
@@ -1816,7 +1825,7 @@
         }
       }
     },
-    "/tenants/{tenantId}/edfiadmin/v2/{year}/applicationrequests/resetcredentials": {
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}/applicationrequests/resetcredentials": {
       "put": {
         "tags": [
           "TenantsEdFiAdmin"
@@ -1831,7 +1840,7 @@
             }
           },
           {
-            "name": "year",
+            "name": "instanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1864,17 +1873,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EdfiApplicationAuthData"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               }
             }
@@ -2595,17 +2604,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SetInstanceIsDefaultRequest"
+                "$ref": "#/components/schemas/SetInstanceIsDefaultEDXRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/SetInstanceIsDefaultRequest"
+                "$ref": "#/components/schemas/SetInstanceIsDefaultEDXRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/SetInstanceIsDefaultRequest"
+                "$ref": "#/components/schemas/SetInstanceIsDefaultEDXRequest"
               }
             }
           }
@@ -2724,6 +2733,92 @@
         }
       }
     },
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances": {
+      "get": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}": {
+      "get": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/tenants/{tenantId}/edfiadmin/applicationcredentials": {
       "post": {
         "tags": [
@@ -2764,17 +2859,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreatedApplicationRequestResponse"
+                  "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
                 }
               }
             }
@@ -3330,6 +3425,39 @@
         },
         "additionalProperties": false
       },
+      "ApplicationRequestCredentialsResponse": {
+        "type": "object",
+        "properties": {
+          "applicationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "secret": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "authenticationUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "resourcesUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDefaultOdsInstance": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "AssignBulkUserLicensesRequest": {
         "type": "object",
         "properties": {
@@ -3640,39 +3768,6 @@
         },
         "additionalProperties": false
       },
-      "CreatedApplicationRequestResponse": {
-        "type": "object",
-        "properties": {
-          "applicationId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "key": {
-            "type": "string",
-            "nullable": true
-          },
-          "secret": {
-            "type": "string",
-            "nullable": true
-          },
-          "baseUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "authenticationUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "resourcesUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "isDefaultOdsInstance": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
       "DescriptorNamespace": {
         "type": "object",
         "properties": {
@@ -3737,6 +3832,9 @@
           "reportingPeriodExts": {
             "type": "integer",
             "format": "int32"
+          },
+          "healthy": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -4077,7 +4175,7 @@
         },
         "additionalProperties": false
       },
-      "SetInstanceIsDefaultRequest": {
+      "SetInstanceIsDefaultEDXRequest": {
         "type": "object",
         "properties": {
           "tenantId": {
@@ -4089,6 +4187,9 @@
             "nullable": true
           },
           "isDefault": {
+            "type": "boolean"
+          },
+          "validate": {
             "type": "boolean"
           }
         },
