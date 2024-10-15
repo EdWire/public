@@ -61,19 +61,18 @@
         }
       }
     },
-    "/tenants/{tenantId}/datahealthchecksedfi/{year}/odshealthcheckdistrictdetails": {
+    "/tenants/{tenantId}/datahealthchecksedfi/{instanceId}/odshealthcheckdistrictdetails": {
       "get": {
         "tags": [
           "DataHealth"
         ],
         "parameters": [
           {
-            "name": "year",
+            "name": "instanceId",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
@@ -2577,6 +2576,36 @@
         }
       }
     },
+    "/tenants/{tenantId}/edfiadmin/odsinstances/{instanceId}": {
+      "get": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/tenants/{tenantId}/edfiadmin/odsinstances/{instanceId}/default": {
       "put": {
         "tags": [
@@ -2729,6 +2758,119 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/odsinstances/{instanceId}/credentials": {
+      "put": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInstanceCredentialsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInstanceCredentialsRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInstanceCredentialsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatedInstanceCredentialsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatedInstanceCredentialsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatedInstanceCredentialsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/odsinstances/{instanceId}/verify-credentials": {
+      "get": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInstanceConnectionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInstanceConnectionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestInstanceConnectionResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4195,6 +4337,20 @@
         },
         "additionalProperties": false
       },
+      "TestInstanceConnectionResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateApplicationRequest": {
         "type": "object",
         "properties": {
@@ -4282,6 +4438,32 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateInstanceCredentialsRequest": {
+        "type": "object",
+        "properties": {
+          "tenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "instanceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientSecret": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -4398,6 +4580,20 @@
             "nullable": true
           },
           "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatedInstanceCredentialsResponse": {
+        "type": "object",
+        "properties": {
+          "tenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "instanceId": {
             "type": "string",
             "nullable": true
           }
