@@ -433,6 +433,10 @@
           "exceptionCount": {
             "type": "integer",
             "description": "The total count of invalid Records produced by this Rule."
+          },
+          "ruleIdentification": {
+            "type": "string",
+            "description": "The custom identifier of this Rule."
           }
         }
       },
