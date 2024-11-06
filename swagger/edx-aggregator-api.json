@@ -472,6 +472,36 @@
         }
       }
     },
+    "/tenants/{tenantId}/users/{userId}/resetmfa": {
+      "put": {
+        "tags": [
+          "Tenants"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/tenants/{tenantId}/users/{userId}/activate": {
       "put": {
         "tags": [
@@ -4337,6 +4367,19 @@
         },
         "additionalProperties": false
       },
+      "TenantApiTenantV1TenantAdditionalSetting": {
+        "type": "object",
+        "properties": {
+          "showLocalLoginOptionToTenantAdmins": {
+            "type": "boolean"
+          },
+          "gracePeriodMfaExpiryDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TestInstanceConnectionResponse": {
         "type": "object",
         "properties": {
@@ -4549,8 +4592,32 @@
           "identityProviders": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/UpdateTenantRequestIdentityProvider"
             },
+            "nullable": true
+          },
+          "additionalSettings": {
+            "$ref": "#/components/schemas/TenantApiTenantV1TenantAdditionalSetting"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTenantRequestIdentityProvider": {
+        "type": "object",
+        "properties": {
+          "identityProviderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityProviderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "enableMFA": {
+            "type": "boolean"
+          },
+          "enforceMFA": {
+            "type": "string",
             "nullable": true
           }
         },
