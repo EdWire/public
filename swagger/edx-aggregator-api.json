@@ -4343,6 +4343,10 @@
           "userId": {
             "type": "string",
             "nullable": true
+          },
+          "strategy": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
