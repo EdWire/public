@@ -42,7 +42,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -433,7 +433,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -978,7 +978,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -1270,7 +1270,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -1562,7 +1562,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -1854,7 +1854,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -2146,7 +2146,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -2689,7 +2689,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -2998,7 +2998,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -3307,7 +3307,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -3616,7 +3616,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -3925,7 +3925,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -4399,7 +4399,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -4651,7 +4651,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -4903,7 +4903,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -5155,7 +5155,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -5407,7 +5407,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -5833,7 +5833,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -6061,7 +6061,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -6289,7 +6289,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
@@ -6517,7 +6517,7 @@
             "required": false,
             "default": 25,
             "format": "int32",
-            "maximum": 500,
+            "maximum": 1000,
             "minimum": 0,
             "type": "integer"
           },
