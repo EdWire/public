@@ -1653,17 +1653,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             }
           }
@@ -1852,6 +1852,60 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}/applicationrequests/resetcredentials": {
@@ -1881,17 +1935,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ExternalResetCredentialsApplicationRequest"
+                "$ref": "#/components/schemas/ExternalUpdateApplicationRequest"
               }
             }
           }
@@ -1913,6 +1967,136 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApplicationRequestCredentialsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}/applicationrequests/{applicationId}/approve": {
+      "put": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tenants/{tenantId}/edfiadmin/v2/odsinstances/{instanceId}/applicationrequests/{applicationId}/deny": {
+      "put": {
+        "tags": [
+          "TenantsEdFiAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationRequestDTO"
+                  }
                 }
               }
             }
@@ -3630,6 +3814,41 @@
         },
         "additionalProperties": false
       },
+      "ApplicationRequestDTO": {
+        "type": "object",
+        "properties": {
+          "vendorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "applicationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "applicationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "claimSetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "educationOrganizationId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AssignBulkUserLicensesRequest": {
         "type": "object",
         "properties": {
@@ -3732,6 +3951,10 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          },
+          "scopedEducationOrganizationId": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -4101,11 +4324,15 @@
           "educationOrganizationId": {
             "type": "string",
             "nullable": true
+          },
+          "claimSetName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ExternalResetCredentialsApplicationRequest": {
+      "ExternalUpdateApplicationRequest": {
         "type": "object",
         "properties": {
           "educationOrganizationId": {
@@ -4418,6 +4645,10 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          },
+          "scopedEducationOrganizationId": {
+            "type": "string",
             "nullable": true
           }
         },
