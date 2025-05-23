@@ -10,6 +10,15 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "oauth2_client_credentials": {
+      "type": "oauth2",
+      "description": "Ed-Fi ODS/API OAuth 2.0 Client Credentials Grant Type authorization",
+      "flow": "application",
+      "tokenUrl": "http://localhost:54746/oauth/token",
+      "scopes": {}
+    }
+  },
   "paths": {
     "/{instanceId}/{schoolYear}/changequeries/v1/availableChangeVersions": {
       "get": {
@@ -60,10 +69,7 @@
         },
         "security": [
           {
-            "4bd61021-59b7-4ea0-82d6-ef44feba8b73_oauth2_client_credentials": []
-          },
-          {
-            "Tenant1_oauth2_client_credentials": []
+            "oauth2_client_credentials": []
           }
         ]
       }
