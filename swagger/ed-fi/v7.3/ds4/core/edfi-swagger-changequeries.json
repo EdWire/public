@@ -6,17 +6,17 @@
     "version": "v7.3"
   },
   "host": "api.edgraph.com",
-  "basePath": "/edfi/v7.3/saas/core",
+  "basePath": "/edfi/v7.3/saas/ds4/core",
   "schemes": [
     "https"
   ],
   "securityDefinitions": {
     "oauth2_client_credentials": {
+      "type": "oauth2",
       "description": "Ed-Fi ODS/API OAuth 2.0 Client Credentials Grant Type authorization",
       "flow": "application",
-      "scopes": {},
       "tokenUrl": "http://localhost:54746/oauth/token",
-      "type": "oauth2"
+      "scopes": {}
     }
   },
   "paths": {
