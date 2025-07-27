@@ -69,7 +69,7 @@
         },
         "security": [
           {
-            "Tenant1_oauth2_client_credentials": []
+            "oauth2_client_credentials": []
           }
         ]
       }
