@@ -6,7 +6,7 @@
     "version": "v7.3"
   },
   "host": "api.edgraph.com",
-  "basePath": "/edfi/v7.3/saas/ds4/core",
+  "basePath": "/edfi/v7.3/saas/core",
   "schemes": [
     "https"
   ],
@@ -15,38 +15,38 @@
       "type": "oauth2",
       "description": "Ed-Fi ODS/API OAuth 2.0 Client Credentials Grant Type authorization",
       "flow": "application",
-      "tokenUrl": "http://localhost:54746/oauth/token",
+      "tokenUrl": "http://localhost:54746/Tenant1/2025/oauth/token",
       "scopes": {}
     }
   },
   "paths": {
     "/{instanceId}/{schoolYear}/changequeries/v1/availableChangeVersions": {
       "get": {
+        "produces": [
+          "application/json"
+        ],
         "tags": [
           "availableChangeVersions"
         ],
-        "summary": "Gets the change versions for the earliest (oldest) and most recent (newest) changes available.",
         "operationId": "getAvailableChangeVersions",
+        "summary": "Gets the change versions for the earliest (oldest) and most recent (newest) changes available.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "The resource was successfully retrieved.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "required": [
-                    "oldestChangeVersion",
-                    "newestChangeVersion"
-                  ],
-                  "properties": {
-                    "oldestChangeVersion": {
-                      "type": "integer",
-                      "format": "int64"
-                    },
-                    "newestChangeVersion": {
-                      "type": "integer",
-                      "format": "int64"
-                    }
-                  }
+            "schema": {
+              "required": [
+                "oldestChangeVersion",
+                "newestChangeVersion"
+              ],
+              "properties": {
+                "oldestChangeVersion": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "newestChangeVersion": {
+                  "type": "integer",
+                  "format": "int64"
                 }
               }
             }
@@ -61,10 +61,7 @@
             "description": "Not Found.  An attempt to connect to the database snapshot, enabled by the Use-Snapshot header, was unsuccessful (indicating the snapshot may have been removed)."
           },
           "500": {
-            "description": "An unhandled error occurred on the server. See the response body for details.",
-            "content": {
-              "application/json": {}
-            }
+            "description": "An unhandled error occurred on the server. See the response body for details."
           }
         },
         "security": [
