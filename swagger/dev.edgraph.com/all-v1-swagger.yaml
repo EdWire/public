@@ -24611,6 +24611,10 @@ paths:
                   type: boolean
                 Version:
                   type: string
+                RolesRequired:
+                  type: boolean
+                IdentityRequired:
+                  type: boolean
             encoding:
               File:
                 style: form
@@ -24627,6 +24631,10 @@ paths:
               IsVisible:
                 style: form
               Version:
+                style: form
+              RolesRequired:
+                style: form
+              IdentityRequired:
                 style: form
       responses:
         '401':
