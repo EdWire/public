@@ -388,6 +388,97 @@ paths:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '201':
           description: The resource was created. The location of the resource is available in the Location header of the response.
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/resources':
+    get:
+      tags:
+        - Connections
+      summary: Retrieves an Ed-Fi Resources by Instance Id and Year.
+      operationId: GetEdFiResourcesByInstanceYear
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: year
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ResourcesByInstanceYearPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/onboardingsteps/{stepNumber}':
     put:
       tags:
@@ -9797,6 +9888,41 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ResourceClaim'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.ResourceItem:
+      type: object
+      properties:
+        resourceName:
+          type: string
+          nullable: true
+        schema:
+          type: string
+          nullable: true
+        dependencies:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.ResourcesByInstanceYearPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ResourceItem'
           nullable: true
           readOnly: true
       additionalProperties: false
