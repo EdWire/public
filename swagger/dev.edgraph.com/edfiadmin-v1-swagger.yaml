@@ -1545,6 +1545,11 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: loadEducationOrganizations
+          in: query
+          description: ''
+          schema:
+            type: boolean
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
