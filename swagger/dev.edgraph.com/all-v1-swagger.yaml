@@ -35890,6 +35890,9 @@ components:
         numberOfEvaluations:
           type: integer
           format: int32
+        campus:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraiserSearchStatus:
       enum:
@@ -35936,6 +35939,9 @@ components:
         numberOfEvaluations:
           type: integer
           format: int32
+        campus:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.StaffSearchStatus:
       enum:
@@ -42635,6 +42641,12 @@ components:
           nullable: true
         isDeleted:
           type: boolean
+          nullable: true
+        appraiserFullName:
+          type: string
+          nullable: true
+        staffFullName:
+          type: string
           nullable: true
       additionalProperties: false
     EvaluationApi.Evaluations.V1.EvaluationResponsePaginatedItemsViewModel:
