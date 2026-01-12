@@ -37610,6 +37610,14 @@ components:
           nullable: true
         mfaCompleted:
           type: boolean
+        isDeleted:
+          type: boolean
+        deletedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserListResponseWithApplicationLicensePaginatedItemsViewModel:
       type: object
@@ -37715,6 +37723,14 @@ components:
           nullable: true
         mfaCompleted:
           type: boolean
+        isDeleted:
+          type: boolean
+        deletedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenant:
       type: object
@@ -46233,6 +46249,14 @@ components:
           nullable: true
         tenantAdmin:
           type: boolean
+          nullable: true
+        isDeleted:
+          type: boolean
+        deletedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
           nullable: true
       additionalProperties: false
       description: Entities
