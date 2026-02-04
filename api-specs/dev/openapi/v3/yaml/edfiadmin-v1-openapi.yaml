@@ -6431,6 +6431,21 @@ paths:
           required: true
           schema:
             type: string
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -6679,6 +6694,21 @@ paths:
           schema:
             type: integer
             format: int32
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -10318,6 +10348,23 @@ components:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SyncEntry'
           nullable: true
           readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionRequest:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        year:
+          type: integer
+          format: int32
+          nullable: true
+        resourceUri:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.TestInstanceConnectionResponse:
       type: object
