@@ -16358,6 +16358,84 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/webhooks/{webhookId}/logs':
+    get:
+      tags:
+        - Webhooks
+      summary: Retrieve the logs for webhook.
+      operationId: GetWebhookLogs
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          schema:
+            type: string
+            default: ''
+        - name: from
+          in: query
+          schema:
+            type: integer
+            format: int64
+            default: 0
+        - name: to
+          in: query
+          schema:
+            type: integer
+            format: int64
+            default: 0
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Webhook.V1.PaginatedWebhookLogsItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/webhooks/{webhookId}':
     delete:
       tags:
@@ -27388,6 +27466,25 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    TenantApi.Webhook.V1.PaginatedWebhookLogsItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookDispatchResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
     TenantApi.Webhook.V1.UpdateWebhookRequest:
       type: object
       properties:
@@ -27429,6 +27526,51 @@ components:
           readOnly: true
         webhookSchema:
           $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSchema'
+      additionalProperties: false
+    TenantApi.Webhook.V1.WebhookDispatchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        updatedAt:
+          type: string
+          nullable: true
+        updatedBy:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        webhookId:
+          type: string
+          nullable: true
+        event:
+          type: string
+          nullable: true
+        url:
+          type: string
+          nullable: true
+        payload:
+          type: string
+          nullable: true
+        contentType:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        postAttempts:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookLogPostAttemptResponse'
+          nullable: true
+          readOnly: true
       additionalProperties: false
     TenantApi.Webhook.V1.WebhookEventResponse:
       type: object
@@ -27473,6 +27615,19 @@ components:
       type: object
       properties:
         id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Webhook.V1.WebhookLogPostAttemptResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        response:
+          type: string
+          nullable: true
+        triggeredAt:
           type: string
           nullable: true
       additionalProperties: false
