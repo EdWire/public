@@ -27289,6 +27289,559 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{id}':
+    delete:
+      tags:
+        - Specifications
+      summary: Delete of Specification resource
+      operationId: DeleteSpecification
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationDeletedResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Specifications
+      summary: Get Specification resource
+      operationId: GetSpecification
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Specifications
+      summary: Update specification
+      operationId: UpdateSpecification
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationUpdatedResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{specificationId}/purge':
+    delete:
+      tags:
+        - Specifications
+      summary: Purge a deleted Specification resource
+      operationId: PurgeSpecification
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: specificationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationPurgedResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{specificationId}/recover':
+    post:
+      tags:
+        - Specifications
+      summary: Recover deleted Specification resource
+      operationId: RecoverSpecification
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: specificationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationRecoveredResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/export':
+    post:
+      tags:
+        - Specifications
+      summary: Export all Specifications resources given a Tenant
+      operationId: ExportSpecifications
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationsExportedResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/search':
+    post:
+      tags:
+        - Specifications
+      summary: Seaarch specifications
+      operationId: SearchSpecifications
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationsSearchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications':
+    post:
+      tags:
+        - Specifications
+      summary: Create a Specification resource
+      operationId: CreateSpecification
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/tenants/{tenantId}/staffclassifications/{staffClassificationId}':
     delete:
       tags:
@@ -39919,6 +40472,25 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        specification:
+          type: string
+          nullable: true
+      additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.CreateStateEducationAgencyRequest:
       type: object
       properties:
@@ -40669,6 +41241,33 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportType'
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.ExportStatus:
+      enum:
+        - Unknown
+        - Failure
+        - Exported
+      type: string
+    EdfiAdminApi.EdfiAdmin.V1.ExportType:
+      enum:
+        - Unknown
+        - Json
+        - Csv
+      type: string
     EdfiAdminApi.EdfiAdmin.V1.GenderRepresentation:
       type: object
       properties:
@@ -41758,6 +42357,22 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          format: int32
+        pageIndex:
+          type: integer
+          format: int32
+        orderBy:
+          type: string
+          nullable: true
+        filter:
+          type: string
+          nullable: true
+      additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.SecretEncryptionMetadata:
       type: object
       properties:
@@ -41785,6 +42400,146 @@ components:
           nullable: true
         isDefault:
           type: boolean
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationDeletedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationPurgedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationRecoveredResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        specification:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
+        deletedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationUpdatedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationsExportedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportType'
+        status:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportStatus'
+        details:
+          type: string
+          nullable: true
+        contents:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationsSearchResponse:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          format: int32
+        pageIndex:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse'
+          nullable: true
+          readOnly: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.StateEducationAgency:
       type: object
@@ -42418,6 +43173,28 @@ components:
           type: integer
           format: int32
         status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        specification:
           type: string
           nullable: true
       additionalProperties: false
