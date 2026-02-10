@@ -10617,6 +10617,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/evaluations/count':
+    get:
+      tags:
+        - Evaluations
+      operationId: GetEvaluationCountAsync
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationCountResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/evaluations/forms':
     get:
       tags:
@@ -42720,6 +42763,19 @@ components:
         formVersion:
           type: string
           nullable: true
+      additionalProperties: false
+    EvaluationApi.Evaluations.V1.EvaluationCountResponse:
+      type: object
+      properties:
+        evaluationCount:
+          type: integer
+          format: int32
+        appraiserCount:
+          type: integer
+          format: int32
+        staffCount:
+          type: integer
+          format: int32
       additionalProperties: false
     EvaluationApi.Evaluations.V1.EvaluationCreatedResponse:
       type: object
