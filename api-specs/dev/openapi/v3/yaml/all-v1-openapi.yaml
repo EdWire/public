@@ -6,6 +6,69 @@ info:
 servers:
   - url: https://api.dev.edgraph.com/tenant
 paths:
+  '/tenants/{tenantId}/analytics/datalake/query':
+    get:
+      tags:
+        - Analytics / Data Lake
+      summary: Retrieves gold-tier data from the lakehouse
+      operationId: GetPaginatedLakehouseRecords
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
   '/tenants/{tenantId}/analytics/connectors/{connectorId}':
     delete:
       tags:
@@ -34113,6 +34176,53 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AnalyticsApi.Groups.V1.GroupResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    AnalyticsApi.Lakehouses.V1.LakehouseRecord:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        schoolYear:
+          type: integer
+          format: int32
+        dataStandardName:
+          type: string
+          nullable: true
+        dataStandardVersion:
+          type: string
+          nullable: true
+        entityName:
+          type: string
+          nullable: true
+        resourceKeyHash:
+          type: string
+          nullable: true
+        jsonPayload:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.LakehouseRecord'
           nullable: true
           readOnly: true
       additionalProperties: false
