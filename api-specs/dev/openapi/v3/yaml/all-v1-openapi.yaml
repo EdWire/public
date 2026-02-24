@@ -10684,7 +10684,7 @@ paths:
     get:
       tags:
         - Evaluations
-      operationId: GetEvaluationCountAsync
+      operationId: GetEvaluationCount
       parameters:
         - name: tenantId
           in: path
