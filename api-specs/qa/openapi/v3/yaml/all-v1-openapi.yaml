@@ -6,6 +6,69 @@ info:
 servers:
   - url: https://api.qa.edgraph.com/tenant
 paths:
+  '/tenants/{tenantId}/analytics/datalake/query':
+    get:
+      tags:
+        - Analytics / Data Lake
+      summary: Retrieves gold-tier data from the lakehouse
+      operationId: GetPaginatedLakehouseRecords
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
   '/tenants/{tenantId}/analytics/connectors/{connectorId}':
     delete:
       tags:
@@ -10526,6 +10589,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/evaluations/count':
+    get:
+      tags:
+        - Evaluations
+      operationId: GetEvaluationCount
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationCountResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/evaluations/forms':
     get:
       tags:
@@ -12755,6 +12861,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.EdFiApplicationApiClientProfileResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients/regenerate':
+    put:
+      tags:
+        - Instances / Applications
+      summary: Regenerates an application's API Client Credentials
+      operationId: RegenerateApplicationApiClientCredentials
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: applicationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.RegenerateApiClientSecretResponse'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -32787,6 +32956,28 @@ paths:
           required: true
           schema:
             type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          schema:
+            type: string
+            default: ''
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -32811,7 +33002,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookEventsResponse'
+                $ref: '#/components/schemas/TenantApi.Webhook.V1.PaginatedWebhookEventItemsResponse'
         '400':
           description: Bad Request
           content:
@@ -33341,6 +33532,53 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AnalyticsApi.Groups.V1.GroupResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    AnalyticsApi.Lakehouses.V1.LakehouseRecord:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        schoolYear:
+          type: integer
+          format: int32
+        dataStandardName:
+          type: string
+          nullable: true
+        dataStandardVersion:
+          type: string
+          nullable: true
+        entityName:
+          type: string
+          nullable: true
+        resourceKeyHash:
+          type: string
+          nullable: true
+        jsonPayload:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.LakehouseRecord'
           nullable: true
           readOnly: true
       additionalProperties: false
@@ -42557,6 +42795,19 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EvaluationApi.Evaluations.V1.EvaluationCountResponse:
+      type: object
+      properties:
+        evaluationCount:
+          type: integer
+          format: int32
+        appraiserCount:
+          type: integer
+          format: int32
+        staffCount:
+          type: integer
+          format: int32
+      additionalProperties: false
     EvaluationApi.Evaluations.V1.EvaluationCreatedResponse:
       type: object
       properties:
@@ -47792,6 +48043,14 @@ components:
             $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSubscriberResponse'
           nullable: true
           readOnly: true
+        subscriptions:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        webhookSchema:
+          $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSchema'
       additionalProperties: false
     TenantApi.Webhook.V1.PaginatedItemsResponse:
       type: object
@@ -47809,6 +48068,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    TenantApi.Webhook.V1.PaginatedWebhookEventItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookEventResponse'
           nullable: true
           readOnly: true
       additionalProperties: false
@@ -47845,14 +48123,51 @@ components:
             $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSubscriberResponse'
           nullable: true
           readOnly: true
-      additionalProperties: false
-    TenantApi.Webhook.V1.WebhookEventsResponse:
-      type: object
-      properties:
-        eventSubscriptions:
+        subscriptions:
           type: array
           items:
-            $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSubscriberResponse'
+            type: string
+          nullable: true
+          readOnly: true
+        webhookSchema:
+          $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSchema'
+      additionalProperties: false
+    TenantApi.Webhook.V1.WebhookEventResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        updatedAt:
+          type: string
+          nullable: true
+        updatedBy:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        provider:
+          type: string
+          nullable: true
+        group:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        scope:
+          type: array
+          items:
+            type: string
           nullable: true
           readOnly: true
       additionalProperties: false
@@ -47910,7 +48225,21 @@ components:
             $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSubscriberResponse'
           nullable: true
           readOnly: true
+        subscriptions:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        webhookSchema:
+          $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookSchema'
       additionalProperties: false
+    TenantApi.Webhook.V1.WebhookSchema:
+      enum:
+        - Unknown
+        - Edgraph
+        - Cloudeventsv1
+      type: string
     TenantApi.Webhook.V1.WebhookSubscriberResponse:
       type: object
       properties:
