@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "76ef53ad-9e2d-4dcb-913b-5e1498c992f4",
+		"name": "EdGraph Data Platform - Query API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45620949",
+		"_collection_link": "https://edwire.postman.co/workspace/Team-Workspace~9e191f81-2a72-4c0f-8539-1630ee181f25/collection/45620949-76ef53ad-9e2d-4dcb-913b-5e1498c992f4?action=share&source=collection_link&creator=45620949"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"jwt\", responseData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{ClientId}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{ClientSecret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{IdentityWebBaseUrl}}/token",
+					"host": [
+						"{{IdentityWebBaseUrl}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{TenantApiBaseUrl}}/tenants/{{TenantId}}/analytics/datalake/query",
+					"host": [
+						"{{TenantApiBaseUrl}}"
+					],
+					"path": [
+						"tenants",
+						"{{TenantId}}",
+						"analytics",
+						"datalake",
+						"query"
+					],
+					"query": [
+						{
+							"key": "pageIndex",
+							"value": "0",
+							"description": "page number starting at zero",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "10",
+							"description": "default 10, min 1, max 1000",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "lastModifiedDateTime asc",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "lastModifiedDateTime desc",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "entityName == \"/ed-fi/students\"",
+							"description": "filter resource of type /ed-fi/students",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "schoolYear == \"2011\"",
+							"description": "filter resource within school year 2011",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "jsonPayload.contains(\"a70f0212e8164f708cee13f288c35873\")",
+							"description": "find student with specific ID",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
