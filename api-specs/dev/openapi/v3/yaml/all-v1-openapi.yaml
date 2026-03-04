@@ -37795,6 +37795,9 @@ components:
           nullable: true
         isDeleted:
           type: boolean
+        image:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormPaginatedItemsViewModel:
       type: object
@@ -44149,6 +44152,9 @@ components:
           nullable: true
         status:
           $ref: '#/components/schemas/FormApi.Forms.V1.FormStatus'
+        image:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.CreateFullFormRequest:
       type: object
@@ -44178,6 +44184,9 @@ components:
             $ref: '#/components/schemas/FormApi.Forms.V1.CreateFullSectionRequest'
           nullable: true
           readOnly: true
+        image:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.CreateFullQuestionRequest:
       type: object
@@ -44242,6 +44251,9 @@ components:
         order:
           type: integer
           format: int32
+          nullable: true
+        subHeading:
+          type: string
           nullable: true
       additionalProperties: false
     FormApi.Forms.V1.FormAccessResponse:
@@ -44412,6 +44424,9 @@ components:
           nullable: true
         status:
           $ref: '#/components/schemas/FormApi.Forms.V1.FormStatus'
+        image:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.UpdateFullFormRequest:
       type: object
@@ -44444,6 +44459,9 @@ components:
             $ref: '#/components/schemas/FormApi.Forms.V1.UpdateFullSectionRequest'
           nullable: true
           readOnly: true
+        image:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.UpdateFullQuestionRequest:
       type: object
@@ -44515,6 +44533,9 @@ components:
           type: integer
           format: int32
           nullable: true
+        subHeading:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Questions.V1.QuestionCreatedResponse:
       type: object
@@ -44550,6 +44571,9 @@ components:
         - Date
         - Radio
         - CustomComponent
+        - Scoring
+        - Html
+        - Image
       type: string
     FormApi.Questions.V1.QuestionUpdatedResponse:
       type: object
@@ -44585,6 +44609,9 @@ components:
         order:
           type: integer
           format: int32
+          nullable: true
+        subHeading:
+          type: string
           nullable: true
       additionalProperties: false
     FormApi.Sections.V1.SectionCreatedResponse:
@@ -44653,6 +44680,9 @@ components:
           type: integer
           format: int32
           nullable: true
+        subHeading:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Sections.V1.SectionResponsePaginatedItemsViewModel:
       type: object
@@ -44706,6 +44736,9 @@ components:
         order:
           type: integer
           format: int32
+          nullable: true
+        subHeading:
+          type: string
           nullable: true
       additionalProperties: false
     FormApi.Submissions.V1.CreateSubmissionRequest:
