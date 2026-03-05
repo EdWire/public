@@ -9451,7 +9451,7 @@ components:
       properties:
         educationOrganizationId:
           type: integer
-          format: int32
+          format: int64
         nameOfInstitution:
           type: string
           nullable: true
@@ -10315,7 +10315,7 @@ components:
           nullable: true
         educationOrganizationId:
           type: integer
-          format: int32
+          format: int64
         localEducationAgencyId:
           type: integer
           format: int32
