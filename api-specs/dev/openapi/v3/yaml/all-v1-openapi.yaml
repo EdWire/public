@@ -30408,6 +30408,238 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Tenant.V1.TenantUpdatedResponse'
+  '/tenants/{tenantId}/jobs/dsl/{jobId}/execute':
+    put:
+      tags:
+        - Tenant / Dsl
+      summary: Executes a DSL Sync Job for a given tenant
+      operationId: ExecuteDslSyncJob
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: jobId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '202':
+          description: The job execution was successfully requested.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSyncApi.Dsl.V1.DslJobExecutedResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/jobs/dsl/{jobId}':
+    get:
+      tags:
+        - Tenant / Dsl
+      summary: Retrieves a DSL jobs profile for a given tenant
+      operationId: GetDslSyncData
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: jobId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSyncApi.Dsl.V1.DslProfile'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    put:
+      tags:
+        - Tenant / Dsl
+      summary: Updates a DSL Sync Job for a given tenant
+      operationId: UpdateDslSync
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: jobId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.UpdateJobRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.UpdateJobRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.UpdateJobRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.UpdateJobRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSyncApi.Dsl.V1.JobUpdatedResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '204':
+          description: The resource was successfully updated.
+  '/tenants/{tenantId}/jobs/dsl':
+    post:
+      tags:
+        - Tenant / Dsl
+      summary: Creates a DSL Sync Job for a given tenant
+      operationId: CreateDslSync
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.CreateJobRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.CreateJobRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.CreateJobRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DataSyncApi.Dsl.V1.CreateJobRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSyncApi.Dsl.V1.JobCreatedResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/onboardingsteps/edfi-api-metadata':
     post:
       tags:
@@ -35758,6 +35990,107 @@ components:
             $ref: '#/components/schemas/DataSyncApi.Connection.V1.ConnectionMetadata'
           nullable: true
           readOnly: true
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.CreateJobRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        enabled:
+          type: boolean
+          nullable: true
+        dagWorkflow:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+          nullable: true
+        endDate:
+          type: string
+          nullable: true
+        cron:
+          type: string
+          nullable: true
+        timeZone:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.DslJobExecutedResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        jobId:
+          type: string
+          nullable: true
+        jobExecutionId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.DslProfile:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        jobId:
+          type: string
+          nullable: true
+        enabled:
+          type: boolean
+          nullable: true
+        dagWorkflow:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.JobCreatedResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        jobId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.JobUpdatedResponse:
+      type: object
+      additionalProperties: false
+    DataSyncApi.Dsl.V1.UpdateJobRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        jobId:
+          type: string
+          nullable: true
+        enabled:
+          type: boolean
+          nullable: true
+        dagWorkflow:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+          nullable: true
+        endDate:
+          type: string
+          nullable: true
+        cron:
+          type: string
+          nullable: true
+        timeZone:
+          type: string
+          nullable: true
       additionalProperties: false
     DataSyncApi.EdFiRosterSync.V1.EdFiRosterSyncJobMode:
       enum:
