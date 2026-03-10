@@ -6,6 +6,52 @@ info:
 servers:
   - url: https://api.dev.edgraph.com/management
 paths:
+  /analytics/datalake/query:
+    get:
+      tags:
+        - Analytics / Data Lake
+      summary: Retrieves gold-tier data from the lakehouse
+      operationId: GetPaginatedLakehouseRecords
+      parameters:
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse'
+        '403':
+          description: Forbidden
+        '500':
+          description: Server Error
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
   '/apiresources/{apiResourceId}':
     delete:
       tags:
@@ -16999,6 +17045,53 @@ paths:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
 components:
   schemas:
+    AnalyticsApi.Lakehouses.V1.LakehouseRecord:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        schoolYear:
+          type: integer
+          format: int32
+        dataStandardName:
+          type: string
+          nullable: true
+        dataStandardVersion:
+          type: string
+          nullable: true
+        entityName:
+          type: string
+          nullable: true
+        resourceKeyHash:
+          type: string
+          nullable: true
+        jsonPayload:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.LakehouseRecord'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
     ApplicationApi.Application.V1.ApplicationCreatedResponse:
       type: object
       properties:
