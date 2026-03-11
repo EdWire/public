@@ -72,7 +72,7 @@
 			"response": []
 		},
 		{
-			"name": "Query",
+			"name": "Query (management scope)",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -87,7 +87,82 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{TenantApiBaseUrl}}/tenants/{{TenantId}}/analytics/datalake/query",
+					"raw": "{{ManagementApiBaseUrl}}/analytics/datalake/query?pageSize=10&orderBy=lastModifiedDateTime desc",
+					"host": [
+						"{{ManagementApiBaseUrl}}"
+					],
+					"path": [
+						"analytics",
+						"datalake",
+						"query"
+					],
+					"query": [
+						{
+							"key": "pageIndex",
+							"value": "0",
+							"description": "page number starting at zero",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "10",
+							"description": "default 10, min 1, max 1000"
+						},
+						{
+							"key": "orderBy",
+							"value": "lastModifiedDateTime asc",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "lastModifiedDateTime desc"
+						},
+						{
+							"key": "filter",
+							"value": "tenantId == \"d093211f-4915-47e2-9267-3c0efefa3960\"",
+							"description": "filter by a specific tenant",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "entityName == \"/ed-fi/students\"",
+							"description": "filter resource of type /ed-fi/students",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "schoolYear == \"2011\"",
+							"description": "filter resource within school year 2011",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "jsonPayload.contains(\"a70f0212e8164f708cee13f288c35873\")",
+							"description": "find student with specific ID",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query (tenant scope)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{TenantApiBaseUrl}}/tenants/{{TenantId}}/analytics/datalake/query?pageSize=10&orderBy=lastModifiedDateTime desc",
 					"host": [
 						"{{TenantApiBaseUrl}}"
 					],
@@ -108,8 +183,7 @@
 						{
 							"key": "pageSize",
 							"value": "10",
-							"description": "default 10, min 1, max 1000",
-							"disabled": true
+							"description": "default 10, min 1, max 1000"
 						},
 						{
 							"key": "orderBy",
@@ -118,8 +192,7 @@
 						},
 						{
 							"key": "orderBy",
-							"value": "lastModifiedDateTime desc",
-							"disabled": true
+							"value": "lastModifiedDateTime desc"
 						},
 						{
 							"key": "filter",
