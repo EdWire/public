@@ -137,6 +137,12 @@
 						},
 						{
 							"key": "filter",
+							"value": "entityName == \"/ed-fi/students\" and schoolYear == \"2011\"",
+							"description": "multiple conditions",
+							"disabled": true
+						},
+						{
+							"key": "filter",
 							"value": "jsonPayload.contains(\"a70f0212e8164f708cee13f288c35873\")",
 							"description": "find student with specific ID",
 							"disabled": true
@@ -204,6 +210,12 @@
 							"key": "filter",
 							"value": "schoolYear == \"2011\"",
 							"description": "filter resource within school year 2011",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "entityName == \"/ed-fi/students\" and schoolYear == \"2011\"",
+							"description": "multiple conditions",
 							"disabled": true
 						},
 						{
