@@ -10039,6 +10039,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Sections.V1.AcademicSubjectListResponse:
       type: object
@@ -11136,6 +11137,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Tenant.V1.TenantUpdatedResponse:
       type: object
