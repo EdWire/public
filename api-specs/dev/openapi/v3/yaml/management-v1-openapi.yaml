@@ -40,16 +40,26 @@ paths:
             type: string
             default: ''
       responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
         '200':
           description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse'
-        '403':
-          description: Forbidden
-        '500':
-          description: Server Error
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
   '/apiresources/{apiResourceId}':
