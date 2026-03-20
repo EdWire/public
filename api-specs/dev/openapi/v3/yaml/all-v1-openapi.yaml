@@ -49607,6 +49607,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Partnership.V1.PaginatedItemsResponse:
       type: object
