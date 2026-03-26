@@ -19510,6 +19510,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     EdGraph.HttpAggregators.Management.Api.Controllers.v1.ViewModels.Requests.Tenants.UpdateTenantRequest:
       type: object
@@ -26020,6 +26021,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Partnership.V1.UpdatePartnershipRequest:
       type: object
@@ -26125,6 +26127,9 @@ components:
           $ref: '#/components/schemas/TenantApi.Tenant.V1.DomainStatus'
         autoAssignUsers:
           type: boolean
+        manuallyVerified:
+          type: boolean
+          nullable: true
       additionalProperties: false
     TenantApi.Tenant.V1.CreateOrganizationRequest:
       type: object
@@ -27319,6 +27324,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Tenant.V1.TenantUpdatedResponse:
       type: object
