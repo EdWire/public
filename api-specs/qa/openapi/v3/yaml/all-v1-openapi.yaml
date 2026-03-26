@@ -43298,9 +43298,14 @@ components:
     EvaluationApi.Evaluations.V1.OrganizationDiscriminator:
       enum:
         - Unknown
-        - StateEducationAgency
+        - EducationOrganizationNetwork
+        - EducationServiceCenter
         - LocalEducationAgency
+        - OrganizationDepartment
+        - Other
+        - PostSecondaryInstitution
         - School
+        - StateEducationAgency
       type: string
     EvaluationApi.Evaluations.V1.OrganizationIdentifierType:
       enum:
@@ -46987,6 +46992,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Partnership.V1.PaginatedItemsResponse:
       type: object
@@ -47168,6 +47174,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Sections.V1.AcademicSubjectListResponse:
       type: object
@@ -48265,6 +48272,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
     TenantApi.Tenant.V1.TenantUpdatedResponse:
       type: object

@@ -271,6 +271,7 @@ components:
         - ManagedServiceProvider
         - StateEducationAgency
         - AssessmentProvider
+        - ServiceProvider
       type: string
   securitySchemes:
     oauth2:
