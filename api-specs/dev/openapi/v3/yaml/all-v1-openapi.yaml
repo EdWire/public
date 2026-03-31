@@ -26643,6 +26643,8 @@ paths:
                   type: boolean
                 IdentityRequired:
                   type: boolean
+                State:
+                  type: string
             encoding:
               File:
                 style: form
@@ -26663,6 +26665,8 @@ paths:
               RolesRequired:
                 style: form
               IdentityRequired:
+                style: form
+              State:
                 style: form
       responses:
         '401':
@@ -26973,6 +26977,8 @@ paths:
                   type: boolean
                 RolesRequired:
                   type: boolean
+                State:
+                  type: string
             encoding:
               File:
                 style: form
@@ -26991,6 +26997,8 @@ paths:
               IdentityRequired:
                 style: form
               RolesRequired:
+                style: form
+              State:
                 style: form
       responses:
         '401':
@@ -35548,6 +35556,9 @@ components:
           nullable: true
         identityRequired:
           type: boolean
+          nullable: true
+        state:
+          type: string
           nullable: true
       additionalProperties: false
       description: Entities
@@ -45845,9 +45856,14 @@ components:
     EvaluationApi.Evaluations.V1.OrganizationDiscriminator:
       enum:
         - Unknown
-        - StateEducationAgency
+        - EducationOrganizationNetwork
+        - EducationServiceCenter
         - LocalEducationAgency
+        - OrganizationDepartment
+        - Other
+        - PostSecondaryInstitution
         - School
+        - StateEducationAgency
       type: string
     EvaluationApi.Evaluations.V1.OrganizationIdentifierType:
       enum:
