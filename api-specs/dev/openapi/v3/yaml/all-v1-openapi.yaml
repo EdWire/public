@@ -22750,7 +22750,7 @@ paths:
     get:
       tags:
         - Observation Settings
-      summary: Get Paginated Available Forms
+      summary: Get Paginated Available StaffClassifications
       operationId: GetPaginatedStaffClassifications
       parameters:
         - name: tenantId
