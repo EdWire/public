@@ -51549,6 +51549,9 @@ components:
         certificationStatus:
           type: string
           nullable: true
+        state:
+          type: string
+          nullable: true
       additionalProperties: false
     ValidationsApi.Containers.V1.ContainerDto+Types+TagDto:
       type: object
@@ -51593,6 +51596,9 @@ components:
             $ref: '#/components/schemas/ValidationsApi.Containers.V1.Url'
           nullable: true
           readOnly: true
+        state:
+          type: string
+          nullable: true
       additionalProperties: false
     ValidationsApi.Containers.V1.CreateContainerRequest:
       type: object
@@ -51918,6 +51924,9 @@ components:
             type: string
           nullable: true
           readOnly: true
+        state:
+          type: string
+          nullable: true
       additionalProperties: false
     ValidationsApi.Containers.V1.UpdateContainerRequest:
       type: object
