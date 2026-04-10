@@ -23313,7 +23313,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -40129,24 +40129,6 @@ components:
         observationId:
           type: string
           nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse:
-      type: object
-      properties:
-        pageIndex:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
-          nullable: true
-        count:
-          type: integer
-          format: int64
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponse:
       type: object
