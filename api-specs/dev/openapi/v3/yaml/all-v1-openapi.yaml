@@ -40488,6 +40488,9 @@ components:
         order:
           type: integer
           format: int32
+        customId:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
       type: object
