@@ -40432,7 +40432,7 @@ components:
           type: string
           nullable: true
         validation:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse'
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionValidationResponseDto'
         options:
           type: array
           items:
@@ -40463,6 +40463,8 @@ components:
           format: int32
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel:
       type: object
@@ -40480,18 +40482,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse'
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse:
-      type: object
-      properties:
-        minLength:
-          type: integer
-          format: int32
-          nullable: true
-        maxLength:
-          type: integer
-          format: int32
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
