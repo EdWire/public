@@ -131,14 +131,14 @@
     },
     "securitySchemes": {
       "oauth2_client_credentials": {
+        "description": "Ed-Fi ODS/API OAuth 2.0 Client Credentials Grant Type authorization",
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "scopes": {},
-            "tokenUrl": "http://localhost:54746/{Tenant/Context Selection}/oauth/token"
+            "tokenUrl": "http://localhost:54746/{Tenant/Context Selection}/oauth/token",
+            "scopes": {}
           }
-        },
-        "description": "Ed-Fi ODS/API OAuth 2.0 Client Credentials Grant Type authorization"
+        }
       }
     }
   },
