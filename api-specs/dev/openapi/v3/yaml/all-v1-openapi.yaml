@@ -23627,7 +23627,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -40400,88 +40400,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse'
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          nullable: true
-        sectionId:
-          type: string
-          nullable: true
-        formId:
-          type: string
-          nullable: true
-        tenantId:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        type:
-          type: string
-          nullable: true
-        required:
-          type: boolean
-        defaultValue:
-          type: string
-          nullable: true
-        validation:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionValidationResponseDto'
-        options:
-          type: array
-          items:
-            type: string
-          nullable: true
-        createdBy:
-          type: string
-          nullable: true
-        createdDateTime:
-          type: string
-          nullable: true
-        lastModifiedBy:
-          type: string
-          nullable: true
-        lastModifiedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
-        deletedDateTime:
-          type: string
-          nullable: true
-        isDeleted:
-          type: boolean
-        order:
-          type: integer
-          format: int32
-        component:
-          nullable: true
-        visibilityCondition:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel:
-      type: object
-      properties:
-        pageIndex:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        count:
-          type: integer
-          format: int64
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse'
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
