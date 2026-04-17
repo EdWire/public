@@ -23771,6 +23771,83 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/campuses/{campusId}/sections':
+    get:
+      tags:
+        - Observations
+      summary: Retrieves a list of Sections for a given available campus.
+      operationId: GetPaginatedCampusSections
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: campusId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: courseTitle
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/observations/campuses':
     get:
       tags:
@@ -40245,6 +40322,9 @@ components:
         discriminator:
           type: string
           nullable: true
+        campusId:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponseGetPaginatedItemsResponse:
       type: object
@@ -51791,6 +51871,24 @@ components:
         schoolYear:
           type: integer
           format: int32
+      additionalProperties: false
+    TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
       additionalProperties: false
     TenantApi.Sections.V1.SectionProfileResponse:
       type: object
