@@ -23965,6 +23965,18 @@ paths:
           schema:
             type: string
             default: ''
+        - name: firstName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: lastName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -40925,7 +40937,22 @@ components:
         observationDate:
           type: string
           nullable: true
+        campus:
+          type: string
+          nullable: true
+        observerId:
+          type: string
+          nullable: true
+        evalueeId:
+          type: string
+          nullable: true
         formId:
+          type: string
+          nullable: true
+        formVersion:
+          type: string
+          nullable: true
+        campusClassId:
           type: string
           nullable: true
       additionalProperties: false
@@ -47261,6 +47288,9 @@ components:
           type: string
           nullable: true
         formVersion:
+          type: string
+          nullable: true
+        campusClassId:
           type: string
           nullable: true
       additionalProperties: false
