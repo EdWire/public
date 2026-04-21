@@ -51901,6 +51901,12 @@ components:
         schoolYear:
           type: integer
           format: int32
+        classPeriods:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
       additionalProperties: false
     TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse:
       type: object
@@ -52000,6 +52006,12 @@ components:
         schoolYear:
           type: integer
           format: int32
+        classPeriods:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
       additionalProperties: false
     TenantApi.Sections.V1.SectionSource:
       enum:
