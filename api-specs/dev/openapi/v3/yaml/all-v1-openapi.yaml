@@ -47537,6 +47537,9 @@ components:
           nullable: true
         visibilityCondition:
           $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
+        originalQuestionId:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.CreateFullQuestionValidationRequest:
       type: object
