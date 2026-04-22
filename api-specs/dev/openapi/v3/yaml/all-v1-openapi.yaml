@@ -23811,9 +23811,8 @@ paths:
           schema:
             type: string
             default: ''
-        - name: courseTitle
+        - name: filter
           in: query
-          description: ''
           schema:
             type: string
             default: ''
