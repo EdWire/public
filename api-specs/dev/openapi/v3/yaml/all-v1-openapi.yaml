@@ -23813,6 +23813,7 @@ paths:
             default: ''
         - name: filter
           in: query
+          description: ''
           schema:
             type: string
             default: ''
