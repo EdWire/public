@@ -38707,6 +38707,9 @@ components:
         customId:
           type: string
           nullable: true
+        multiline:
+          type: boolean
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.CreateQuestionValidationRequestDto:
       type: object
@@ -38764,6 +38767,9 @@ components:
           $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
         customId:
           type: string
+          nullable: true
+        multiline:
+          type: boolean
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.UpdateQuestionValidationRequestDto:
@@ -39542,6 +39548,9 @@ components:
           $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
         customId:
           type: string
+          nullable: true
+        multiline:
+          type: boolean
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel:
