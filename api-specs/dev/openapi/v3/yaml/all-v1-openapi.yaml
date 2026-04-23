@@ -24030,7 +24030,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportResponse'
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -37077,6 +37077,19 @@ components:
             $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferenceDetailsResponse'
           nullable: true
           readOnly: true
+      additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        reportId:
+          type: string
+          nullable: true
+        userId:
+          type: string
+          nullable: true
       additionalProperties: false
     AnalyticsApi.Reports.V1.ReportResponse:
       type: object
