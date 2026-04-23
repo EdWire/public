@@ -23919,6 +23919,248 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences':
+    get:
+      tags:
+        - Observations
+      summary: Save user preferences for a given Dashboard
+      operationId: GetDashboardPreferences
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferencesResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observations
+      summary: Save user preferences for a given Dashboard
+      operationId: SaveDashboardPreferences
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/{dashboardId}':
+    get:
+      tags:
+        - Observations
+      summary: Get Observation Dashboard
+      operationId: GetDashboard
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: personaIdentifier
+          in: query
+          description: ''
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/access':
+    post:
+      tags:
+        - Observations
+      summary: Verify user access to dashboards
+      operationId: VerifyDashboardAccess
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: reportId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/observations/evaluees/{evalueeId}/sections':
     get:
       tags:
@@ -36807,6 +37049,35 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferenceDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferencesResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        userId:
+          type: string
+          nullable: true
+        reportId:
+          type: string
+          nullable: true
+        preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferenceDetailsResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
     AnalyticsApi.Reports.V1.ReportResponse:
       type: object
       properties:
@@ -41059,6 +41330,21 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        dashboardId:
+          type: string
+          nullable: true
+        preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertReportPreferenceDetails'
+          nullable: true
+      additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest:
       type: object
       properties:
@@ -41091,6 +41377,30 @@ components:
           type: string
           nullable: true
         tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertReportPreferenceDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest:
+      type: object
+      properties:
+        personaIdentifier:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessResponse:
+      type: object
+      properties:
+        personaIdentifier:
           type: string
           nullable: true
       additionalProperties: false
