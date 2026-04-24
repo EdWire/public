@@ -36176,6 +36176,14 @@ components:
           format: int32
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
+        customId:
+          type: string
+          nullable: true
+        multiline:
+          type: boolean
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.CreateQuestionValidationRequestDto:
       type: object
@@ -36228,6 +36236,14 @@ components:
           type: integer
           format: int32
         component:
+          nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
+        customId:
+          type: string
+          nullable: true
+        multiline:
+          type: boolean
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.UpdateQuestionValidationRequestDto:
@@ -37002,6 +37018,14 @@ components:
           format: int32
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
+        customId:
+          type: string
+          nullable: true
+        multiline:
+          type: boolean
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel:
       type: object
@@ -37031,6 +37055,31 @@ components:
         maxLength:
           type: integer
           format: int32
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto:
+      type: object
+      properties:
+        logic:
+          type: string
+          nullable: true
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityRuleDto'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityRuleDto:
+      type: object
+      properties:
+        fieldId:
+          type: string
+          nullable: true
+        operator:
+          type: string
+          nullable: true
+        value:
+          type: string
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Role:
@@ -43884,6 +43933,14 @@ components:
         component:
           type: string
           nullable: true
+        customId:
+          type: string
+          nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
+        originalQuestionId:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.CreateFullQuestionValidationRequest:
       type: object
@@ -43917,6 +43974,9 @@ components:
           format: int32
           nullable: true
         subHeading:
+          type: string
+          nullable: true
+        customId:
           type: string
           nullable: true
       additionalProperties: false
@@ -44162,6 +44222,11 @@ components:
         component:
           type: string
           nullable: true
+        customId:
+          type: string
+          nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
       additionalProperties: false
     FormApi.Forms.V1.UpdateFullQuestionValidationRequest:
       type: object
@@ -44198,6 +44263,9 @@ components:
           format: int32
           nullable: true
         subHeading:
+          type: string
+          nullable: true
+        customId:
           type: string
           nullable: true
       additionalProperties: false
@@ -44255,6 +44323,32 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    FormApi.Questions.V1.QuestionVisibilityCondition:
+      type: object
+      properties:
+        logic:
+          type: string
+          nullable: true
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityRule'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    FormApi.Questions.V1.QuestionVisibilityRule:
+      type: object
+      properties:
+        fieldId:
+          type: string
+          nullable: true
+        operator:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
     FormApi.Sections.V1.CreateSectionRequest:
       type: object
       properties:
@@ -44275,6 +44369,9 @@ components:
           format: int32
           nullable: true
         subHeading:
+          type: string
+          nullable: true
+        customId:
           type: string
           nullable: true
       additionalProperties: false
@@ -44347,6 +44444,9 @@ components:
         subHeading:
           type: string
           nullable: true
+        customId:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Sections.V1.SectionResponsePaginatedItemsViewModel:
       type: object
@@ -44402,6 +44502,9 @@ components:
           format: int32
           nullable: true
         subHeading:
+          type: string
+          nullable: true
+        customId:
           type: string
           nullable: true
       additionalProperties: false
