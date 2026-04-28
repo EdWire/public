@@ -22416,6 +22416,2002 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/observations/forms':
+    get:
+      tags:
+        - Observation Settings
+      summary: Get Paginated Forms
+      operationId: GetPaginatedForms
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/application':
+    get:
+      tags:
+        - Observation Settings
+      summary: Gets the application settings for the tenant
+      operationId: GetApplicationSettings
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetApplicationSettingsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observation Settings
+      summary: Sets the Application Settings of an Observation for a given Tenant
+      operationId: SetApplicationSettings
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/available-staffclassifications':
+    get:
+      tags:
+        - Observation Settings
+      summary: Get Paginated Available StaffClassifications
+      operationId: GetPaginatedStaffClassifications
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.StaffClassification.V1.GetStaffClassificationsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/personas':
+    get:
+      tags:
+        - Observation Settings
+      summary: Gets available personas
+      operationId: GetPaginatedPersonas
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observation Settings
+      summary: Adds a persona for a given Tenant
+      operationId: AddAvailablePersona
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/rolepersonas':
+    post:
+      tags:
+        - Observation Settings
+      summary: Updates personas assigned to a role configuration of the tenants setting
+      operationId: SetRolePersonasSettings
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/staffclassifications':
+    get:
+      tags:
+        - Observation Settings
+      summary: Gets the staffClassification settings for the tenant
+      operationId: GetStaffClassificationsSettings
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetStaffClassificationSettingsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/settings/verify-credentials':
+    get:
+      tags:
+        - Observation Settings
+      summary: Gets the staffClassification settings for the tenant
+      operationId: VerifySysAdminCredentials
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ActionResult'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft':
+    get:
+      tags:
+        - Observations
+      summary: Get an observation form's draft
+      operationId: GetObservationDraft
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationDraftResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observations
+      summary: Creates a draft for an observation forms
+      operationId: UpsertObservationDraft
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission':
+    get:
+      tags:
+        - Observations
+      summary: Gets a submission for a specific observation
+      operationId: GetObservationSubmission
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit':
+    post:
+      tags:
+        - Observations
+      summary: Creates a submission for an available form referencing an existing observation
+      operationId: CreateObservationSubmission
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/{observationId}':
+    delete:
+      tags:
+        - Observations
+      summary: Deletes an Observation for a given tenant
+      operationId: DeleteObservation
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.DeleteObservationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    get:
+      tags:
+        - Observations
+      summary: Get an Observation for a given tenant
+      operationId: GetObservationById
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    put:
+      tags:
+        - Observations
+      summary: Update an Observation for a given tenant
+      operationId: UpdateObservation
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: observationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions':
+    get:
+      tags:
+        - Observations
+      summary: Search Questions
+      operationId: GetFormQuestions
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: sectionId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/available-forms/{formId}/sections':
+    get:
+      tags:
+        - Observations
+      summary: Search Observation Form Sections
+      operationId: GetFormSections
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: formId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/available-forms':
+    get:
+      tags:
+        - Observations
+      summary: Get Paginated Available Forms
+      operationId: GetPaginatedAvailableForms
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/campuses/{campusId}/sections':
+    get:
+      tags:
+        - Observations
+      summary: Retrieves a list of Sections for a given available campus.
+      operationId: GetPaginatedCampusSections
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: campusId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/campuses':
+    get:
+      tags:
+        - Observations
+      summary: Get Available Campuses
+      operationId: GetPaginatedAvailableCampuses
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: nameOfInstitution
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences':
+    get:
+      tags:
+        - Observations
+      summary: Save user preferences for a given Dashboard
+      operationId: GetDashboardPreferences
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferencesResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observations
+      summary: Save user preferences for a given Dashboard
+      operationId: SaveDashboardPreferences
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/{dashboardId}':
+    get:
+      tags:
+        - Observations
+      summary: Get Observation Dashboard
+      operationId: GetDashboard
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dashboardId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: personaIdentifier
+          in: query
+          description: ''
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/dashboards/access':
+    post:
+      tags:
+        - Observations
+      summary: Verify user access to dashboards
+      operationId: VerifyDashboardAccess
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/evaluees/{evalueeId}/sections':
+    get:
+      tags:
+        - Observations
+      summary: Gets the Sections of an evaluee.
+      operationId: GetEvalueeSections
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: evalueeId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filterBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.User.V1.SectionResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/observations/evaluees':
+    get:
+      tags:
+        - Observations
+      summary: Get paginated evaluees
+      operationId: GetPaginatedEvaluees
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: campus
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: evalueeId
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: firstName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: lastName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponseGetPaginatedItemsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations/search/evaluees':
+    get:
+      tags:
+        - Observations
+      summary: Search paginated evaluees
+      operationId: SearchPaginatedEvaluees
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: firstName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: lastName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponsePaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/observations':
+    get:
+      tags:
+        - Observations
+      summary: Get Paginated Observations for a given tenant
+      operationId: GetPaginatedObservations
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: campus
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: evalueeName
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: evalueeId
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: formId
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: status
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: from
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: to
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponsePaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Observations
+      summary: Creates a new Observation for a given tenant
+      operationId: CreateObservation
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/submittedobservations':
+    get:
+      tags:
+        - Observations
+      summary: Get submitted Observations count
+      operationId: GetSubmittedObservationsCount
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: evalueeId
+          in: query
+          description: ''
+          schema:
+            type: string
+        - name: campus
+          in: query
+          description: ''
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetSubmittedObservationsCountResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/onboardingsteps/{stepNumber}/connections/{connectionId}':
     get:
       tags:
@@ -34357,6 +36353,48 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferenceDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferencesResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        userId:
+          type: string
+          nullable: true
+        reportId:
+          type: string
+          nullable: true
+        preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferenceDetailsResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        reportId:
+          type: string
+          nullable: true
+        userId:
+          type: string
+          nullable: true
+      additionalProperties: false
     AnalyticsApi.Reports.V1.ReportResponse:
       type: object
       properties:
@@ -37862,6 +39900,770 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Instances.InstanceResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        identifier:
+          type: string
+          nullable: true
+        isDefault:
+          type: boolean
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.AddAvailablePersonaResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        identifierType:
+          type: string
+          nullable: true
+        discriminator:
+          type: string
+          nullable: true
+        campusId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        observationDate:
+          type: string
+          nullable: true
+        campus:
+          type: string
+          nullable: true
+        observerId:
+          type: string
+          nullable: true
+        evalueeId:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        formVersion:
+          type: string
+          nullable: true
+        campusClassId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest:
+      type: object
+      properties:
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        currentStep:
+          type: integer
+          format: int32
+        data:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.DeleteObservationResponse:
+      type: object
+      properties:
+        observationId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        campus:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponsePaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormConfigurationRequest:
+      type: object
+      properties:
+        formId:
+          type: string
+          nullable: true
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationRequest'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormConfigurationResponse:
+      type: object
+      properties:
+        formId:
+          type: string
+          nullable: true
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        source:
+          type: string
+          nullable: true
+        image:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
+        deletedDateTime:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        order:
+          type: integer
+          format: int32
+        customId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationRequest:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        activeStartingDate:
+          type: string
+          nullable: true
+        activeUntilDate:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        activeStartingDate:
+          type: string
+          nullable: true
+        activeUntilDate:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetApplicationSettingsResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormConfigurationResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetStaffClassificationSettingsResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        namespaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.StaffClassificationNamespaceConfiguration'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetSubmittedObservationsCountResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        campus:
+          type: string
+          nullable: true
+        evalueeId:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationDraftResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        data:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        campus:
+          type: string
+          nullable: true
+        observerId:
+          type: string
+          nullable: true
+        observerName:
+          type: string
+          nullable: true
+        evalueeId:
+          type: string
+          nullable: true
+        evalueeName:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        formVersion:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        observationDate:
+          type: string
+          nullable: true
+        submissionDate:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
+        deletedDateTime:
+          type: string
+          nullable: true
+        campusClassId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponsePaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponse'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        data:
+          type: string
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+        isDeleted:
+          type: boolean
+        name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        identifier:
+          type: string
+          nullable: true
+        isDefault:
+          type: boolean
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormConfigurationRequest'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetApplicationSettingsResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        assignedPersonaIdentifiers:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.StaffClassificationNamespaceConfiguration:
+      type: object
+      properties:
+        namespace:
+          type: string
+          nullable: true
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.StaffClassificationNamespaceRole'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.StaffClassificationNamespaceRole:
+      type: object
+      properties:
+        role:
+          type: string
+          nullable: true
+        assignedPersonaIdentifiers:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+        observationDate:
+          type: string
+          nullable: true
+        campus:
+          type: string
+          nullable: true
+        observerId:
+          type: string
+          nullable: true
+        evalueeId:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        formVersion:
+          type: string
+          nullable: true
+        campusClassId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertDashboardPreferencesRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        dashboardId:
+          type: string
+          nullable: true
+        preferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertReportPreferenceDetails'
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        currentStep:
+          type: integer
+          format: int32
+        data:
+          type: string
+          nullable: true
+        observationId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        formId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertReportPreferenceDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessRequest:
+      type: object
+      properties:
+        personaIdentifier:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UseCases.Commands.DashboardAccessResponse:
+      type: object
+      properties:
+        personaIdentifier:
+          type: string
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.ConnectionCreatedResponse:
@@ -43424,7 +46226,7 @@ components:
         forms:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.FormConfigurationResponse'
           nullable: true
           readOnly: true
         recommendedNumberOfEvaluations:
@@ -43466,7 +46268,76 @@ components:
             type: string
           nullable: true
           readOnly: true
+        availablePersonas:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.PersonaResponse'
+          nullable: true
+          readOnly: true
+        roleConfigurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.RoleConfigurationResponse'
+          nullable: true
+          readOnly: true
       additionalProperties: false
+    EvaluationApi.EvaluationSettings.V1.FormConfigurationResponse:
+      type: object
+      properties:
+        formId:
+          type: string
+          nullable: true
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.FormVersionConfigurationResponse'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EvaluationApi.EvaluationSettings.V1.FormVersionConfigurationResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        activeStartingDate:
+          type: string
+          nullable: true
+        activeUntilDate:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EvaluationApi.EvaluationSettings.V1.PersonaResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        identifier:
+          type: string
+          nullable: true
+        isDefault:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+      description: Available Personas
+    EvaluationApi.EvaluationSettings.V1.RoleConfigurationResponse:
+      type: object
+      properties:
+        role:
+          type: string
+          nullable: true
+        assignedPersonaIdentifiers:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: Role Personas
     EvaluationApi.EvaluationSettings.V1.ScheduleType:
       enum:
         - Unknown
@@ -43483,7 +46354,7 @@ components:
         forms:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetFormConfigurationRequest'
           nullable: true
           readOnly: true
         recommendedNumberOfEvaluations:
@@ -43492,6 +46363,32 @@ components:
           nullable: true
         reminderEmailSchedule:
           $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.ScheduleType'
+      additionalProperties: false
+    EvaluationApi.EvaluationSettings.V1.SetFormConfigurationRequest:
+      type: object
+      properties:
+        formId:
+          type: string
+          nullable: true
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetFormVersionConfigurationRequest'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EvaluationApi.EvaluationSettings.V1.SetFormVersionConfigurationRequest:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        activeStartingDate:
+          type: string
+          nullable: true
+        activeUntilDate:
+          type: string
+          nullable: true
       additionalProperties: false
     EvaluationApi.EvaluationSettings.V1.SetUsersRequest:
       type: object
@@ -43570,6 +46467,9 @@ components:
           type: string
           nullable: true
         formVersion:
+          type: string
+          nullable: true
+        campusClassId:
           type: string
           nullable: true
       additionalProperties: false
@@ -43663,6 +46563,9 @@ components:
           type: string
           nullable: true
         staffFullName:
+          type: string
+          nullable: true
+        campusClassId:
           type: string
           nullable: true
       additionalProperties: false
@@ -43775,6 +46678,9 @@ components:
           type: string
           nullable: true
         formVersion:
+          type: string
+          nullable: true
+        campusClassId:
           type: string
           nullable: true
       additionalProperties: false
@@ -44524,6 +47430,9 @@ components:
         data:
           type: string
           nullable: true
+        evaluationId:
+          type: string
+          nullable: true
       additionalProperties: false
     FormApi.Submissions.V1.ExportStatus:
       enum:
@@ -44604,6 +47513,9 @@ components:
           type: string
           nullable: true
         email:
+          type: string
+          nullable: true
+        evaluationId:
           type: string
           nullable: true
       additionalProperties: false
@@ -47056,6 +49968,24 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    IdentityApi.User.V1.SectionResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityApi.User.V1.SectionResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
     IdentityApi.User.V1.SectionUpdatedBulkResponse:
       type: object
       properties:
@@ -47724,6 +50654,9 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    Microsoft.AspNetCore.Mvc.ActionResult:
+      type: object
+      additionalProperties: false
     Microsoft.AspNetCore.Mvc.NoContentResult:
       type: object
       properties:
@@ -48276,6 +51209,24 @@ components:
         schoolYear:
           type: integer
           format: int32
+      additionalProperties: false
+    TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponse'
+          nullable: true
+        count:
+          type: integer
+          format: int64
       additionalProperties: false
     TenantApi.Sections.V1.SectionProfileResponse:
       type: object
