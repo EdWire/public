@@ -23143,6 +23143,12 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: teaTenantId
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
         - name: pageSize
           in: query
           description: ''
