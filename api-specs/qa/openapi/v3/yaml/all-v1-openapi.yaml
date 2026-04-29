@@ -46847,6 +46847,9 @@ components:
         originalQuestionId:
           type: string
           nullable: true
+        multiline:
+          type: boolean
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.CreateFullQuestionValidationRequest:
       type: object
@@ -47133,6 +47136,9 @@ components:
           nullable: true
         visibilityCondition:
           $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
+        multiline:
+          type: boolean
+          nullable: true
       additionalProperties: false
     FormApi.Forms.V1.UpdateFullQuestionValidationRequest:
       type: object
