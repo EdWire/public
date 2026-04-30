@@ -22480,7 +22480,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -23557,7 +23557,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel'
+                $ref: '#/components/schemas/FormApi.Sections.V1.SectionResponsePaginatedItemsViewModel'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -23628,7 +23628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
@@ -39897,6 +39897,24 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.Form'
+          nullable: true
+        count:
+          type: integer
+          format: int64
+      additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormPaginatedItemsViewModel:
       type: object
       properties:
@@ -40195,114 +40213,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse'
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          nullable: true
-        name:
-          type: string
-          nullable: true
-        version:
-          type: string
-          nullable: true
-        tenantId:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        source:
-          type: string
-          nullable: true
-        image:
-          type: string
-          nullable: true
-        isDeleted:
-          type: boolean
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse:
-      type: object
-      properties:
-        pageIndex:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse'
-          nullable: true
-        count:
-          type: integer
-          format: int64
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          nullable: true
-        formId:
-          type: string
-          nullable: true
-        tenantId:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        createdBy:
-          type: string
-          nullable: true
-        createdDateTime:
-          type: string
-          nullable: true
-        lastModifiedBy:
-          type: string
-          nullable: true
-        lastModifiedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
-        deletedDateTime:
-          type: string
-          nullable: true
-        isDeleted:
-          type: boolean
-        order:
-          type: integer
-          format: int32
-        customId:
-          type: string
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
-      type: object
-      properties:
-        pageIndex:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        count:
-          type: integer
-          format: int64
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse'
           nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationRequest:
