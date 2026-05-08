@@ -9277,6 +9277,12 @@ components:
         operationalContextUri:
           type: string
           nullable: true
+        key:
+          type: string
+          nullable: true
+        secret:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiApplicationListResponse:
       type: object
