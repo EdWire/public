@@ -2278,12 +2278,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-  '/changes/{tenantId}/changes':
+  '/tenants/{tenantId}/changes':
     get:
       tags:
         - Changes Logs
       operationId: GetAllChangesAsync
       parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
         - name: pageSize
           in: query
           schema:
@@ -2306,11 +2311,6 @@ paths:
           schema:
             type: string
             default: ''
-        - name: tenantId
-          in: path
-          required: true
-          schema:
-            type: string
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
