@@ -45820,6 +45820,47 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointDataModel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointUrls:
+      type: object
+      properties:
+        dependencies:
+          type: string
+          nullable: true
+        openApiMetadata:
+          type: string
+          nullable: true
+        oauth:
+          type: string
+          nullable: true
+        oauthTokenIntrospection:
+          type: string
+          nullable: true
+        dataManagementApi:
+          type: string
+          nullable: true
+        xsdMetadata:
+          type: string
+          nullable: true
+        changeQueries:
+          type: string
+          nullable: true
+        composites:
+          type: string
+          nullable: true
+      additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointsResponse:
       type: object
       properties:
@@ -45844,6 +45885,26 @@ components:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ApplicationEndpoint'
           nullable: true
           readOnly: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+        suite:
+          type: string
+          nullable: true
+        build:
+          type: string
+          nullable: true
+        dataModels:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointDataModel'
+          nullable: true
+          readOnly: true
+        urls:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointUrls'
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.InstanceListModel:
       type: object
