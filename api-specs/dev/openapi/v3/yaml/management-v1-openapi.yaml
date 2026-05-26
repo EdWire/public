@@ -19888,6 +19888,9 @@ components:
         dontSendEmail:
           type: boolean
           nullable: true
+        platformRole:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Controllers.v1.ViewModels.Requests.StaffClassificationLicenseRequest:
       type: object
