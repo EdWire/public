@@ -10519,6 +10519,9 @@ components:
         status:
           type: string
           nullable: true
+        platformRole:
+          type: string
+          nullable: true
       additionalProperties: false
     IdentityApi.User.V1.UserUpdatedResponse:
       type: object
