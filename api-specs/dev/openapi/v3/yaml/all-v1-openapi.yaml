@@ -20481,10 +20481,12 @@ paths:
     delete:
       tags:
         - Integration Products
+      summary: Removes an Integration Product.
       operationId: DeleteIntegrationProduct
       parameters:
         - name: productId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -20509,19 +20511,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationProductResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -20529,10 +20531,12 @@ paths:
     get:
       tags:
         - Integration Products
+      summary: Gets an Integration Product.
       operationId: GetIntegrationProduct
       parameters:
         - name: productId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -20557,19 +20561,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationProductResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -20577,15 +20581,18 @@ paths:
     put:
       tags:
         - Integration Products
+      summary: Updates an Integration Product.
       operationId: UpdateIntegrationProduct
       parameters:
         - name: productId
           in: path
+          description: ''
           required: true
           schema:
             type: string
             format: uuid
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -20619,13 +20626,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -20634,27 +20641,32 @@ paths:
     get:
       tags:
         - Integration Products
+      summary: Search Integration Products.
       operationId: SearchIntegrationProducts
       parameters:
         - name: pageSize
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 10
         - name: pageIndex
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 0
         - name: orderBy
           in: query
+          description: ''
           schema:
             type: string
             default: ''
         - name: filter
           in: query
+          description: ''
           schema:
             type: string
             default: ''
@@ -20678,13 +20690,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationProductPaginatedItemsViewModel'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
             application/json:
               schema:
@@ -20692,8 +20704,10 @@ paths:
     post:
       tags:
         - Integration Products
+      summary: Creates an Integration Product.
       operationId: CreateIntegrationProduct
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -20727,13 +20741,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -20742,10 +20756,12 @@ paths:
     delete:
       tags:
         - Integration Types
+      summary: Removes an Integration Type.
       operationId: DeleteIntegrationType
       parameters:
         - name: typeId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -20770,19 +20786,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationTypeResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -20790,10 +20806,12 @@ paths:
     get:
       tags:
         - Integration Types
+      summary: Gets an Integration Type.
       operationId: GetIntegrationType
       parameters:
         - name: typeId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -20818,19 +20836,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationTypeResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -20838,15 +20856,18 @@ paths:
     put:
       tags:
         - Integration Types
+      summary: Updates an Integration Type.
       operationId: UpdateIntegrationType
       parameters:
         - name: typeId
           in: path
+          description: ''
           required: true
           schema:
             type: string
             format: uuid
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -20880,13 +20901,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -20895,27 +20916,32 @@ paths:
     get:
       tags:
         - Integration Types
+      summary: Search Integration Types.
       operationId: SearchIntegrationTypes
       parameters:
         - name: pageSize
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 10
         - name: pageIndex
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 0
         - name: orderBy
           in: query
+          description: ''
           schema:
             type: string
             default: ''
         - name: filter
           in: query
+          description: ''
           schema:
             type: string
             default: ''
@@ -20939,13 +20965,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationTypePaginatedItemsViewModel'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
             application/json:
               schema:
@@ -20953,8 +20979,10 @@ paths:
     post:
       tags:
         - Integration Types
+      summary: Creates an Integration Type.
       operationId: CreateIntegrationType
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -20988,13 +21016,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -21003,10 +21031,12 @@ paths:
     delete:
       tags:
         - Integration Vendors
+      summary: Removes an Integration Vendor.
       operationId: DeleteIntegrationVendor
       parameters:
         - name: vendorId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -21031,19 +21061,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationVendorResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -21051,10 +21081,12 @@ paths:
     get:
       tags:
         - Integration Vendors
+      summary: Gets an Integration Vendor.
       operationId: GetIntegrationVendor
       parameters:
         - name: vendorId
           in: path
+          description: ''
           required: true
           schema:
             type: string
@@ -21079,19 +21111,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationVendorResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '404':
-          description: Not Found
+          description: The resource could not be found.
           content:
             application/json:
               schema:
@@ -21099,15 +21131,18 @@ paths:
     put:
       tags:
         - Integration Vendors
+      summary: Updates an Integration Vendor.
       operationId: UpdateIntegrationVendor
       parameters:
         - name: vendorId
           in: path
+          description: ''
           required: true
           schema:
             type: string
             format: uuid
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -21141,13 +21176,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -21156,27 +21191,32 @@ paths:
     get:
       tags:
         - Integration Vendors
+      summary: Search Integration Vendors.
       operationId: SearchIntegrationVendors
       parameters:
         - name: pageSize
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 10
         - name: pageIndex
           in: query
+          description: ''
           schema:
             type: integer
             format: int32
             default: 0
         - name: orderBy
           in: query
+          description: ''
           schema:
             type: string
             default: ''
         - name: filter
           in: query
+          description: ''
           schema:
             type: string
             default: ''
@@ -21200,13 +21240,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationVendorPaginatedItemsViewModel'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
           content:
             application/json:
               schema:
@@ -21214,8 +21254,10 @@ paths:
     post:
       tags:
         - Integration Vendors
+      summary: Creates an Integration Vendor.
       operationId: CreateIntegrationVendor
       requestBody:
+        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -21249,13 +21291,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
-          description: Success
+          description: The requested resource was successfully retrieved.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorResponse'
         '400':
-          description: Bad Request
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
