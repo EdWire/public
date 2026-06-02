@@ -2342,6 +2342,81 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/webhooks/{webhookId}/dispatches/{dispatchId}/rerun':
+    post:
+      tags:
+        - Changes Logs
+      operationId: RequestWebhookReRun
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: dispatchId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Webhook.V1.RequestReRunRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Webhook.V1.RequestReRunRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Webhook.V1.RequestReRunRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Webhook.V1.RequestReRunRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Webhook.V1.ReRunRequestedResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret':
     put:
       tags:
@@ -55294,6 +55369,28 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    TenantApi.Webhook.V1.ReRunRequestedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Webhook.V1.RequestReRunRequest:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        webhookId:
+          type: string
+          nullable: true
+        dispatchId:
+          type: string
+          nullable: true
+        webhookReRunStrategy:
+          $ref: '#/components/schemas/TenantApi.Webhook.V1.WebhookReRunStrategy'
+      additionalProperties: false
     TenantApi.Webhook.V1.UpdateWebhookRequest:
       type: object
       properties:
@@ -55382,6 +55479,12 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    TenantApi.Webhook.V1.WebhookReRunStrategy:
+      enum:
+        - Unknown
+        - Single
+        - Forward
+      type: string
     TenantApi.Webhook.V1.WebhookResponse:
       type: object
       properties:
