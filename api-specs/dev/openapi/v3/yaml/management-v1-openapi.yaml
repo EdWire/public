@@ -26411,6 +26411,14 @@ components:
         organizationName:
           type: string
           nullable: true
+        isDeleted:
+          type: boolean
+        deletedDateTime:
+          type: string
+          nullable: true
+        deletedBy:
+          type: string
+          nullable: true
       additionalProperties: false
     IdentityApi.User.V1.TenantEducationOrganizationMetrics:
       type: object
@@ -26789,6 +26797,8 @@ components:
         status:
           type: string
           nullable: true
+        isDeleted:
+          type: boolean
         platformRole:
           type: string
           nullable: true
@@ -27048,6 +27058,12 @@ components:
           type: boolean
         platformRole:
           type: string
+          nullable: true
+        tenantStatus:
+          type: string
+          nullable: true
+        tenantAdmin:
+          type: boolean
           nullable: true
         isDeleted:
           type: boolean
