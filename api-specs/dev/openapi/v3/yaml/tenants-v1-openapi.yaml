@@ -4030,16 +4030,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -8723,15 +8723,6 @@ components:
         error:
           type: string
           nullable: true
-        statusCode:
-          $ref: '#/components/schemas/System.Net.HttpStatusCode'
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest:
-      type: object
-      properties:
-        baseUrl:
-          type: string
-          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiDataModel:
       type: object
@@ -8784,6 +8775,13 @@ components:
           type: string
           nullable: true
         identity:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest:
+      type: object
+      properties:
+        baseUrl:
           type: string
           nullable: true
       additionalProperties: false
@@ -10959,70 +10957,6 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
-    System.Net.HttpStatusCode:
-      enum:
-        - Continue
-        - SwitchingProtocols
-        - Processing
-        - EarlyHints
-        - OK
-        - Created
-        - Accepted
-        - NonAuthoritativeInformation
-        - NoContent
-        - ResetContent
-        - PartialContent
-        - MultiStatus
-        - AlreadyReported
-        - IMUsed
-        - Ambiguous
-        - Moved
-        - Redirect
-        - RedirectMethod
-        - NotModified
-        - UseProxy
-        - Unused
-        - TemporaryRedirect
-        - PermanentRedirect
-        - BadRequest
-        - Unauthorized
-        - PaymentRequired
-        - Forbidden
-        - NotFound
-        - MethodNotAllowed
-        - NotAcceptable
-        - ProxyAuthenticationRequired
-        - RequestTimeout
-        - Conflict
-        - Gone
-        - LengthRequired
-        - PreconditionFailed
-        - RequestEntityTooLarge
-        - RequestUriTooLong
-        - UnsupportedMediaType
-        - RequestedRangeNotSatisfiable
-        - ExpectationFailed
-        - MisdirectedRequest
-        - UnprocessableEntity
-        - Locked
-        - FailedDependency
-        - UpgradeRequired
-        - PreconditionRequired
-        - TooManyRequests
-        - RequestHeaderFieldsTooLarge
-        - UnavailableForLegalReasons
-        - InternalServerError
-        - NotImplemented
-        - BadGateway
-        - ServiceUnavailable
-        - GatewayTimeout
-        - HttpVersionNotSupported
-        - VariantAlsoNegotiates
-        - InsufficientStorage
-        - LoopDetected
-        - NotExtended
-        - NetworkAuthenticationRequired
-      type: string
     TenantApi.Integrations.V1.CreateIntegrationRequest:
       type: object
       properties:

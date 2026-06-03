@@ -18412,16 +18412,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -32809,16 +32809,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -42916,15 +42916,6 @@ components:
         error:
           type: string
           nullable: true
-        statusCode:
-          $ref: '#/components/schemas/System.Net.HttpStatusCode'
-      additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest:
-      type: object
-      properties:
-        baseUrl:
-          type: string
-          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiDataModel:
       type: object
@@ -42977,6 +42968,13 @@ components:
           type: string
           nullable: true
         identity:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest:
+      type: object
+      properties:
+        baseUrl:
           type: string
           nullable: true
       additionalProperties: false
@@ -45629,6 +45627,8 @@ components:
         metadataJson:
           type: string
           nullable: true
+        discoveryApi:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.CreateEducationServiceCenterRequest:
       type: object
@@ -47037,47 +47037,6 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
-    EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointDataModel:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-        version:
-          type: string
-          nullable: true
-        informationalVersion:
-          type: string
-          nullable: true
-      additionalProperties: false
-    EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointUrls:
-      type: object
-      properties:
-        dependencies:
-          type: string
-          nullable: true
-        openApiMetadata:
-          type: string
-          nullable: true
-        oauth:
-          type: string
-          nullable: true
-        oauthTokenIntrospection:
-          type: string
-          nullable: true
-        dataManagementApi:
-          type: string
-          nullable: true
-        xsdMetadata:
-          type: string
-          nullable: true
-        changeQueries:
-          type: string
-          nullable: true
-        composites:
-          type: string
-          nullable: true
-      additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointsResponse:
       type: object
       properties:
@@ -47102,26 +47061,6 @@ components:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ApplicationEndpoint'
           nullable: true
           readOnly: true
-        version:
-          type: string
-          nullable: true
-        informationalVersion:
-          type: string
-          nullable: true
-        suite:
-          type: string
-          nullable: true
-        build:
-          type: string
-          nullable: true
-        dataModels:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointDataModel'
-          nullable: true
-          readOnly: true
-        urls:
-          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.InstanceEndpointUrls'
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.InstanceListModel:
       type: object
@@ -47453,6 +47392,43 @@ components:
           type: string
           nullable: true
         discoveryUrl:
+          type: string
+          nullable: true
+        discoveryApi:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+        suite:
+          type: string
+          nullable: true
+        build:
+          type: string
+          nullable: true
+        dataModels:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
           type: string
           nullable: true
       additionalProperties: false
@@ -48414,6 +48390,8 @@ components:
         metadataJson:
           type: string
           nullable: true
+        discoveryApi:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.UpdateEducationServiceCenterRequest:
       type: object
@@ -53413,70 +53391,6 @@ components:
         - StateEducationAgency
         - AssessmentProvider
         - ServiceProvider
-      type: string
-    System.Net.HttpStatusCode:
-      enum:
-        - Continue
-        - SwitchingProtocols
-        - Processing
-        - EarlyHints
-        - OK
-        - Created
-        - Accepted
-        - NonAuthoritativeInformation
-        - NoContent
-        - ResetContent
-        - PartialContent
-        - MultiStatus
-        - AlreadyReported
-        - IMUsed
-        - Ambiguous
-        - Moved
-        - Redirect
-        - RedirectMethod
-        - NotModified
-        - UseProxy
-        - Unused
-        - TemporaryRedirect
-        - PermanentRedirect
-        - BadRequest
-        - Unauthorized
-        - PaymentRequired
-        - Forbidden
-        - NotFound
-        - MethodNotAllowed
-        - NotAcceptable
-        - ProxyAuthenticationRequired
-        - RequestTimeout
-        - Conflict
-        - Gone
-        - LengthRequired
-        - PreconditionFailed
-        - RequestEntityTooLarge
-        - RequestUriTooLong
-        - UnsupportedMediaType
-        - RequestedRangeNotSatisfiable
-        - ExpectationFailed
-        - MisdirectedRequest
-        - UnprocessableEntity
-        - Locked
-        - FailedDependency
-        - UpgradeRequired
-        - PreconditionRequired
-        - TooManyRequests
-        - RequestHeaderFieldsTooLarge
-        - UnavailableForLegalReasons
-        - InternalServerError
-        - NotImplemented
-        - BadGateway
-        - ServiceUnavailable
-        - GatewayTimeout
-        - HttpVersionNotSupported
-        - VariantAlsoNegotiates
-        - InsufficientStorage
-        - LoopDetected
-        - NotExtended
-        - NetworkAuthenticationRequired
       type: string
     TenantApi.Integrations.V1.CreateIntegrationProductRequest:
       type: object
