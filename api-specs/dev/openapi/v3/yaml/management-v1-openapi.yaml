@@ -22536,13 +22536,11 @@ components:
       properties:
         isSuccess:
           type: boolean
-          readOnly: true
         value:
           $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.Management.UseCases.EdFiApi'
         error:
           type: string
           nullable: true
-          readOnly: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Services.Management.UseCases.EdFiApiMetadataRequest:
       type: object
@@ -23779,6 +23777,43 @@ components:
           type: string
           nullable: true
         discoveryUrl:
+          type: string
+          nullable: true
+        discoveryApi:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+        suite:
+          type: string
+          nullable: true
+        build:
+          type: string
+          nullable: true
+        dataModels:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
           type: string
           nullable: true
       additionalProperties: false
