@@ -22395,6 +22395,9 @@ components:
           items:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.RelatedInstance'
           nullable: true
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Services.Management.EdFiInstanceListModelPaginatedItemsViewModel:
       type: object
@@ -23332,6 +23335,9 @@ components:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnection'
         sqlConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierSqlConnection'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionTierListModel:
       type: object
@@ -23344,6 +23350,9 @@ components:
           nullable: true
         odsApiConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnectionListModel'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.Instance:
       type: object
