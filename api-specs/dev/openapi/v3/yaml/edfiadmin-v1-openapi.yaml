@@ -8804,6 +8804,9 @@ components:
           nullable: true
         discoveryApi:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.CreateEducationServiceCenterRequest:
       type: object
@@ -9534,6 +9537,9 @@ components:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnection'
         sqlConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierSqlConnection'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionTierListModel:
       type: object
@@ -9546,6 +9552,9 @@ components:
           nullable: true
         odsApiConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnectionListModel'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionUpdatedResponse:
       type: object
@@ -11567,6 +11576,9 @@ components:
           nullable: true
         discoveryApi:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.UpdateEducationServiceCenterRequest:
       type: object
