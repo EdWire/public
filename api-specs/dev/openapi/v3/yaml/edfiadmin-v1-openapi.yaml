@@ -8802,7 +8802,7 @@ components:
         metadataJson:
           type: string
           nullable: true
-        discoveryApi:
+        discoveryDocument:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
         adminApiUrl:
           type: string
@@ -10578,7 +10578,7 @@ components:
         discoveryUrl:
           type: string
           nullable: true
-        discoveryApi:
+        discoveryDocument:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi:
@@ -11574,7 +11574,7 @@ components:
         metadataJson:
           type: string
           nullable: true
-        discoveryApi:
+        discoveryDocument:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
         adminApiUrl:
           type: string
