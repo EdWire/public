@@ -1868,6 +1868,442 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/credentials/{credentialId}/purge':
+    delete:
+      tags:
+        - Credentials
+      summary: Permanently purge a deleted credential
+      operationId: PurgeCredential
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully purged.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/credentials/{credentialId}/recover':
+    post:
+      tags:
+        - Credentials
+      summary: Recover a deleted credential
+      operationId: RecoverCredential
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully recovered.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/credentials/{credentialId}/schema':
+    get:
+      tags:
+        - Credentials
+      summary: Get the JSON schema for a credential
+      operationId: GetCredentialSchema
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialApi.Credentials.V1.GetCredentialSchemaResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/credentials/{credentialId}':
+    delete:
+      tags:
+        - Credentials
+      summary: Delete a credential
+      operationId: DeleteCredential
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+        - name: reason
+          in: query
+          description: Reason for deletion
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully deleted.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Credentials
+      summary: Get a credential by ID
+      operationId: GetCredentialById
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialApi.Credentials.V1.GetCredentialResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Credentials
+      summary: Update a credential
+      operationId: UpdateCredential
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          description: Credential identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Credential update request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateCredentialBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateCredentialBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateCredentialBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateCredentialBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully updated.
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/credentials':
+    get:
+      tags:
+        - Credentials
+      summary: Search credentials for a tenant
+      operationId: SearchCredentials
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: pageIndex
+          in: query
+          description: Zero-based page index
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: Field to sort by
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: Filter expression
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialApi.Credentials.V1.SearchCredentialsResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Credentials
+      summary: Create a new credential for a tenant
+      operationId: CreateCredential
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Credential creation request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateCredentialBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateCredentialBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateCredentialBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateCredentialBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '201':
+          description: The resource was successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialApi.Credentials.V1.CreateCredentialResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/connections/{connectionId}':
     get:
       tags:
@@ -4044,6 +4480,392 @@ paths:
                 $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.Management.InstanceResponsePaginatedItemsViewModel'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/v3/tenants/{tenantId}/instances/{instanceId}/purge':
+    delete:
+      tags:
+        - Instances
+      summary: Permanently purge a deleted instance
+      operationId: PurgeInstance
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: Instance identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully purged.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/v3/tenants/{tenantId}/instances/{instanceId}/recover':
+    post:
+      tags:
+        - Instances
+      summary: Recover a deleted instance
+      operationId: RecoverInstance
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: Instance identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully recovered.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/v3/tenants/{tenantId}/instances/{instanceId}':
+    delete:
+      tags:
+        - Instances
+      summary: Delete an instance
+      operationId: DeleteInstance
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: Instance identifier
+          required: true
+          schema:
+            type: string
+        - name: reason
+          in: query
+          description: Reason for deletion
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully deleted.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Instances
+      summary: Get an instance by ID
+      operationId: GetInstanceById
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: Instance identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.GetInstanceResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Instances
+      summary: Update an instance
+      operationId: UpdateInstance
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          description: Instance identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Instance update request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.UpdateInstanceBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.UpdateInstanceBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.UpdateInstanceBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.UpdateInstanceBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully updated.
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/v3/tenants/{tenantId}/instances':
+    get:
+      tags:
+        - Instances
+      summary: Search instances for a tenant
+      operationId: SearchInstances
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: pageIndex
+          in: query
+          description: Zero-based page index
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: Field to sort by
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: Filter expression
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.SearchInstancesResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Instances
+      summary: Create a new instance for a tenant
+      operationId: CreateInstance
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Instance creation request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.CreateInstanceBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.CreateInstanceBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.CreateInstanceBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.CreateInstanceBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '201':
+          description: The resource was successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.CreateInstanceResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
           content:
             application/json:
               schema:
@@ -7131,6 +7953,276 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/schematypes/{schemaTypeId}':
+    delete:
+      tags:
+        - Schema Types
+      summary: Delete a schema type
+      operationId: DeleteSchemaType
+      parameters:
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+        - name: reason
+          in: query
+          description: Reason for deletion
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully deleted.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Schema Types
+      summary: Get a schema type by ID
+      operationId: GetSchemaTypeById
+      parameters:
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.GetSchemaTypeResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Schema Types
+      summary: Update a schema type
+      operationId: UpdateSchemaType
+      parameters:
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Schema type update request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully updated.
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  /schematypes:
+    get:
+      tags:
+        - Schema Types
+      summary: Search schema types
+      operationId: SearchSchemaTypes
+      parameters:
+        - name: pageIndex
+          in: query
+          description: Zero-based page index
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: Field to sort by
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: Filter expression
+          schema:
+            type: string
+            default: ''
+        - name: tags
+          in: query
+          description: Filter by tags
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.SearchSchemaTypesResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Schema Types
+      summary: Create a new schema type
+      operationId: CreateSchemaType
+      requestBody:
+        description: Schema type creation request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server. See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '201':
+          description: The resource was successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.CreateSchemaTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/serviceProviderResources/{entityId}':
     delete:
       tags:
@@ -9072,7 +10164,7 @@ paths:
       tags:
         - Tenant / Instances
       summary: Deletes an Instance.
-      operationId: DeleteInstance
+      operationId: DeleteInstanceLegacy
       parameters:
         - name: tenantId
           in: path
@@ -9178,7 +10270,7 @@ paths:
       tags:
         - Tenant / Instances
       summary: Updates an Instance.
-      operationId: UpdateInstance
+      operationId: UpdateInstanceLegacy
       parameters:
         - name: tenantId
           in: path
@@ -9241,7 +10333,7 @@ paths:
       tags:
         - Tenant / Instances
       summary: Creates a new Ed-Fi instance
-      operationId: CreateInstance
+      operationId: CreateInstanceLegacy
       parameters:
         - name: tenantId
           in: path
@@ -9678,6 +10770,1148 @@ paths:
                 $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.Management.InstanceResponsePaginatedItemsViewModel'
         '400':
           description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/integrations/products/{productId}':
+    delete:
+      tags:
+        - Tenant / Integration Products
+      summary: Removes an Integration Product.
+      operationId: DeleteIntegrationProduct
+      parameters:
+        - name: productId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationProductResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    get:
+      tags:
+        - Tenant / Integration Products
+      summary: Gets an Integration Product.
+      operationId: GetIntegrationProduct
+      parameters:
+        - name: productId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationProductResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    put:
+      tags:
+        - Tenant / Integration Products
+      summary: Updates an Integration Product.
+      operationId: UpdateIntegrationProduct
+      parameters:
+        - name: productId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationProductResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  /integrations/products:
+    get:
+      tags:
+        - Tenant / Integration Products
+      summary: Search Integration Products.
+      operationId: SearchIntegrationProducts
+      parameters:
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationProductPaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Tenant / Integration Products
+      summary: Creates an Integration Product.
+      operationId: CreateIntegrationProduct
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationProductResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/integrations/types/{typeId}':
+    delete:
+      tags:
+        - Tenant / Integration Types
+      summary: Removes an Integration Type.
+      operationId: DeleteIntegrationType
+      parameters:
+        - name: typeId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    get:
+      tags:
+        - Tenant / Integration Types
+      summary: Gets an Integration Type.
+      operationId: GetIntegrationType
+      parameters:
+        - name: typeId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    put:
+      tags:
+        - Tenant / Integration Types
+      summary: Updates an Integration Type.
+      operationId: UpdateIntegrationType
+      parameters:
+        - name: typeId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  /integrations/types:
+    get:
+      tags:
+        - Tenant / Integration Types
+      summary: Search Integration Types.
+      operationId: SearchIntegrationTypes
+      parameters:
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationTypePaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Tenant / Integration Types
+      summary: Creates an Integration Type.
+      operationId: CreateIntegrationType
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/integrations/vendors/{vendorId}':
+    delete:
+      tags:
+        - Tenant / Integration Vendors
+      summary: Removes an Integration Vendor.
+      operationId: DeleteIntegrationVendor
+      parameters:
+        - name: vendorId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationVendorResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    get:
+      tags:
+        - Tenant / Integration Vendors
+      summary: Gets an Integration Vendor.
+      operationId: GetIntegrationVendor
+      parameters:
+        - name: vendorId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationVendorResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+    put:
+      tags:
+        - Tenant / Integration Vendors
+      summary: Updates an Integration Vendor.
+      operationId: UpdateIntegrationVendor
+      parameters:
+        - name: vendorId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationVendorResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  /integrations/vendors:
+    get:
+      tags:
+        - Tenant / Integration Vendors
+      summary: Search Integration Vendors.
+      operationId: SearchIntegrationVendors
+      parameters:
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationVendorPaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Tenant / Integration Vendors
+      summary: Creates an Integration Vendor.
+      operationId: CreateIntegrationVendor
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorRequest'
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationVendorResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/integrations/{id}':
+    delete:
+      tags:
+        - Tenant / Integrations
+      summary: Removes a tenant Integration.
+      operationId: DeleteTenantIntegration
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.DeleteIntegrationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Tenant / Integrations
+      summary: Gets a tenant Integration.
+      operationId: GetTenantIntegration
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.GetIntegrationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Tenant / Integrations
+      summary: Updates a tenant Integration.
+      operationId: UpdateTenantIntegration
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.UpdateIntegrationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/integrations':
+    get:
+      tags:
+        - Tenant / Integrations
+      summary: Search a Tenant's Integrations
+      operationId: SearchIntegrations
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageSize
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: pageIndex
+          in: query
+          description: ''
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: orderBy
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: string
+            default: ''
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationPaginatedItemsViewModel'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Tenant / Integrations
+      summary: Creates an Integration for a tenant.
+      operationId: AddTenantIntegration
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Integrations.V1.CreateIntegrationResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed.
           content:
             application/json:
               schema:
@@ -10698,6 +12932,307 @@ paths:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
         '200':
           description: The requested resource was successfully retrieved.
+  '/tenants/{tenantId}/schematypes/{schemaTypeId}':
+    delete:
+      tags:
+        - Tenant / Schema Types
+      summary: Delete a schema type for a tenant
+      operationId: DeleteTenantSchemaType
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+        - name: reason
+          in: query
+          description: Reason for deletion
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully deleted.
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    get:
+      tags:
+        - Tenant / Schema Types
+      summary: Get a schema type by ID for a tenant
+      operationId: GetTenantSchemaTypeById
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.GetSchemaTypeResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Tenant / Schema Types
+      summary: Update a schema type for a tenant
+      operationId: UpdateTenantSchemaType
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: schemaTypeId
+          in: path
+          description: Schema type identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Schema type update request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '204':
+          description: The resource was successfully updated.
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+  '/tenants/{tenantId}/schematypes':
+    get:
+      tags:
+        - Tenant / Schema Types
+      summary: Search schema types for a tenant
+      operationId: SearchTenantSchemaTypes
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+        - name: pageIndex
+          in: query
+          description: Zero-based page index
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: orderBy
+          in: query
+          description: Field to sort by
+          schema:
+            type: string
+            default: ''
+        - name: filter
+          in: query
+          description: Filter expression
+          schema:
+            type: string
+            default: ''
+        - name: tags
+          in: query
+          description: Filter by tags
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.SearchSchemaTypesResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+    post:
+      tags:
+        - Tenant / Schema Types
+      summary: Create a new schema type for a tenant
+      operationId: CreateTenantSchemaType
+      parameters:
+        - name: tenantId
+          in: path
+          description: Tenant identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Schema type creation request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '201':
+          description: The resource was successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstancesApi.Instances.V1.CreateSchemaTypeResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/tenants/{tenantId}/jobs/securityscore/{jobId}/executions/{jobExecutionId}':
     get:
       tags:
@@ -17383,6 +19918,83 @@ components:
         - Link
         - Asset
       type: string
+    CredentialApi.Credentials.V1.CreateCredentialResponse:
+      type: object
+      properties:
+        credentialId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CredentialApi.Credentials.V1.CredentialMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        credentialTypeId:
+          type: string
+          nullable: true
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CredentialApi.Credentials.V1.GetCredentialResponse:
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/CredentialApi.Credentials.V1.CredentialMessage'
+      additionalProperties: false
+    CredentialApi.Credentials.V1.GetCredentialSchemaResponse:
+      type: object
+      properties:
+        schema:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+      additionalProperties: false
+    CredentialApi.Credentials.V1.SearchCredentialsResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialApi.Credentials.V1.CredentialMessage'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
     DataSyncApi.Connection.V1.ConnectionCreatedResponse:
       type: object
       properties:
@@ -19124,6 +21736,99 @@ components:
           nullable: true
           readOnly: true
       additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateCredentialBodyRequest:
+      type: object
+      properties:
+        credentialId:
+          type: string
+          nullable: true
+        credentialTypeId:
+          type: string
+          nullable: true
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.CreateSchemaTypeBodyRequest:
+      type: object
+      properties:
+        schemaTypeId:
+          type: string
+          nullable: true
+        provider:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        schemaVersion:
+          type: string
+          nullable: true
+        schema:
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateCredentialBodyRequest:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v1.Requests.UpdateSchemaTypeBodyRequest:
+      type: object
+      properties:
+        provider:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        schemaVersion:
+          type: string
+          nullable: true
+        schema:
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+        allowBreakingChanges:
+          type: boolean
+      additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Controllers.v1.ViewModels.Requests.AddEducationOrganizationRequest:
       type: object
       properties:
@@ -20592,6 +23297,42 @@ components:
         licenses:
           $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Controllers.v2.Responses.UserLicenseSearchResult'
       additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.CreateInstanceBodyRequest:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          nullable: true
+        instanceTypeId:
+          type: string
+          nullable: true
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Management.Api.Controllers.v3.Requests.UpdateInstanceBodyRequest:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          nullable: true
+      additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Services.DataIntegrations.CreateDataIntegrationRequest:
       type: object
       properties:
@@ -20780,6 +23521,9 @@ components:
           items:
             $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.RelatedInstance'
           nullable: true
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Services.Management.EdFiInstanceListModelPaginatedItemsViewModel:
       type: object
@@ -20921,13 +23665,11 @@ components:
       properties:
         isSuccess:
           type: boolean
-          readOnly: true
         value:
           $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.Management.UseCases.EdFiApi'
         error:
           type: string
           nullable: true
-          readOnly: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Services.Management.UseCases.EdFiApiMetadataRequest:
       type: object
@@ -21606,6 +24348,9 @@ components:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnection'
         sqlConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierSqlConnection'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionTierListModel:
       type: object
@@ -21618,6 +24363,9 @@ components:
           nullable: true
         odsApiConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnectionListModel'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.Instance:
       type: object
@@ -22053,6 +24801,43 @@ components:
         discoveryUrl:
           type: string
           nullable: true
+        discoveryDocument:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+        suite:
+          type: string
+          nullable: true
+        build:
+          type: string
+          nullable: true
+        dataModels:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.Onboarding:
       type: object
@@ -22341,6 +25126,72 @@ components:
         type:
           $ref: '#/components/schemas/FormApi.FormComponents.V1.FormComponentType'
       additionalProperties: false
+    Google.Protobuf.WellKnownTypes.ListValue:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    Google.Protobuf.WellKnownTypes.NullValue:
+      enum:
+        - NullValue
+      type: string
+    Google.Protobuf.WellKnownTypes.Struct:
+      type: object
+      properties:
+        fields:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    Google.Protobuf.WellKnownTypes.Value:
+      type: object
+      properties:
+        nullValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.NullValue'
+        hasNullValue:
+          type: boolean
+          readOnly: true
+        numberValue:
+          type: number
+          format: double
+        hasNumberValue:
+          type: boolean
+          readOnly: true
+        stringValue:
+          type: string
+          nullable: true
+        hasStringValue:
+          type: boolean
+          readOnly: true
+        boolValue:
+          type: boolean
+        hasBoolValue:
+          type: boolean
+          readOnly: true
+        structValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        listValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.ListValue'
+        kindCase:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value+KindOneofCase'
+      additionalProperties: false
+    Google.Protobuf.WellKnownTypes.Value+KindOneofCase:
+      enum:
+        - None
+        - NullValue
+        - NumberValue
+        - StringValue
+        - BoolValue
+        - StructValue
+        - ListValue
+      type: string
     IMSAdminApi.V1.Connections.ConnectionCreatedResponse:
       type: object
       properties:
@@ -25484,6 +28335,154 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    InstancesApi.Instances.V1.CreateInstanceResponse:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InstancesApi.Instances.V1.CreateSchemaTypeResponse:
+      type: object
+      properties:
+        schemaTypeId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InstancesApi.Instances.V1.GetInstanceResponse:
+      type: object
+      properties:
+        instance:
+          $ref: '#/components/schemas/InstancesApi.Instances.V1.InstanceMessage'
+      additionalProperties: false
+    InstancesApi.Instances.V1.GetSchemaTypeResponse:
+      type: object
+      properties:
+        schemaType:
+          $ref: '#/components/schemas/InstancesApi.Instances.V1.SchemaTypeMessage'
+      additionalProperties: false
+    InstancesApi.Instances.V1.InstanceMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        instanceTypeId:
+          type: string
+          nullable: true
+        applicationId:
+          type: string
+          nullable: true
+        displayName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        properties:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InstancesApi.Instances.V1.SchemaTypeMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+        provider:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        schemaVersion:
+          type: string
+          nullable: true
+        schema:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        createdBy:
+          type: string
+          nullable: true
+        createdDateTime:
+          type: string
+          nullable: true
+        lastModifiedBy:
+          type: string
+          nullable: true
+        lastModifiedDateTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InstancesApi.Instances.V1.SearchInstancesResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstancesApi.Instances.V1.InstanceMessage'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    InstancesApi.Instances.V1.SearchSchemaTypesResponse:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstancesApi.Instances.V1.SchemaTypeMessage'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
     Microsoft.AspNetCore.Mvc.NoContentResult:
       type: object
       properties:
@@ -25795,6 +28794,404 @@ components:
         organizationName:
           type: string
           nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationProductRequest:
+      type: object
+      properties:
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationProductResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationRequest:
+      type: object
+      properties:
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        integrationProductId:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationTypeRequest:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationTypeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationVendorRequest:
+      type: object
+      properties:
+        integrationTypeIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.CreateIntegrationVendorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.DeleteIntegrationProductResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.DeleteIntegrationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.DeleteIntegrationTypeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.DeleteIntegrationVendorResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.GetIntegrationProductResponse:
+      type: object
+      properties:
+        integrationProduct:
+          $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationProduct'
+      additionalProperties: false
+    TenantApi.Integrations.V1.GetIntegrationResponse:
+      type: object
+      properties:
+        integration:
+          $ref: '#/components/schemas/TenantApi.Integrations.V1.Integration'
+      additionalProperties: false
+    TenantApi.Integrations.V1.GetIntegrationTypeResponse:
+      type: object
+      properties:
+        integrationType:
+          $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationType'
+      additionalProperties: false
+    TenantApi.Integrations.V1.GetIntegrationVendorResponse:
+      type: object
+      properties:
+        integrationVendor:
+          $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationVendor'
+      additionalProperties: false
+    TenantApi.Integrations.V1.Integration:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        integrationProductId:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationPaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Integrations.V1.Integration'
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationProductPaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationProduct'
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationType:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationTypePaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationType'
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationVendor:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.IntegrationVendorPaginatedItemsViewModel:
+      type: object
+      properties:
+        pageIndex:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        count:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApi.Integrations.V1.IntegrationVendor'
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationProductRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationProductResponse:
+      type: object
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeId:
+          type: string
+          nullable: true
+        integrationVendorId:
+          type: string
+          nullable: true
+        integrationProductId:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        tenantId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationResponse:
+      type: object
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationTypeRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationTypeResponse:
+      type: object
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationVendorRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        integrationTypeIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        code:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TenantApi.Integrations.V1.UpdateIntegrationVendorResponse:
+      type: object
       additionalProperties: false
     TenantApi.Partnership.V1.CreatePartnershipRequest:
       type: object
