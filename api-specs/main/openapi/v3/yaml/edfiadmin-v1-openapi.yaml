@@ -6163,16 +6163,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest'
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest'
       responses:
         '401':
           description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
@@ -7752,13 +7752,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiApiMetadataRequest:
-      type: object
-      properties:
-        baseUrl:
-          type: string
-          nullable: true
-      additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiDataModel:
       type: object
       properties:
@@ -7810,6 +7803,13 @@ components:
           type: string
           nullable: true
         identity:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.UseCases.EdFiApiMetadataRequest:
+      type: object
+      properties:
+        baseUrl:
           type: string
           nullable: true
       additionalProperties: false
@@ -8156,6 +8156,11 @@ components:
           type: string
           nullable: true
         metadataJson:
+          type: string
+          nullable: true
+        discoveryDocument:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+        adminApiUrl:
           type: string
           nullable: true
       additionalProperties: false
@@ -8869,6 +8874,9 @@ components:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnection'
         sqlConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierSqlConnection'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionTierListModel:
       type: object
@@ -8881,6 +8889,9 @@ components:
           nullable: true
         odsApiConnection:
           $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.TierOdsApiConnectionListModel'
+        adminApiUrl:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.EdFiConnectionUpdatedResponse:
       type: object
@@ -9877,6 +9888,43 @@ components:
         discoveryUrl:
           type: string
           nullable: true
+        discoveryDocument:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi:
+      type: object
+      properties:
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
+        suite:
+          type: string
+          nullable: true
+        build:
+          type: string
+          nullable: true
+        dataModels:
+          type: array
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApiDataModel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        informationalVersion:
+          type: string
+          nullable: true
       additionalProperties: false
     EdfiAdminApi.EdfiAdmin.V1.Onboarding:
       type: object
@@ -10643,6 +10691,11 @@ components:
           type: string
           nullable: true
         metadataJson:
+          type: string
+          nullable: true
+        discoveryDocument:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.OdsApiDiscoveryApi'
+        adminApiUrl:
           type: string
           nullable: true
       additionalProperties: false
