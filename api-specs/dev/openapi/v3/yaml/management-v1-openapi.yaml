@@ -1551,6 +1551,126 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/tenants/{tenantId}/applications/{applicationId}/onboarding':
+    get:
+      tags:
+        - Applications
+      summary: Retrieves the onboarding settings for an application within a tenant.
+      operationId: GetApplicationOnboardingAsync
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: applicationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingResponse'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+    put:
+      tags:
+        - Applications
+      summary: Sets the onboarding settings for an application within a tenant if not already configured.
+      operationId: UpdateApplicationOnboardingAsync
+      parameters:
+        - name: tenantId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: applicationId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The onboarding settings were successfully applied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+        '404':
+          description: The resource could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/authorizationResources/{authorizationResourceId}':
     delete:
       tags:
@@ -19999,6 +20119,40 @@ components:
         subscriptionType:
           $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationSubscriptionType'
         documentationUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ApplicationApi.Application.V1.ApplicationOnboarding:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingStep'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ApplicationApi.Application.V1.ApplicationOnboardingResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        applicationId:
+          type: string
+          nullable: true
+        onboarding:
+          $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
+      additionalProperties: false
+    ApplicationApi.Application.V1.ApplicationOnboardingStep:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int32
+        description:
           type: string
           nullable: true
       additionalProperties: false
