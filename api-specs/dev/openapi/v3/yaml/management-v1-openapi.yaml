@@ -1991,7 +1991,7 @@ paths:
   /changes:
     get:
       tags:
-        - Changes Logs
+        - Change Logs
       operationId: GetAllChangesAsync
       parameters:
         - name: pageSize
@@ -2044,7 +2044,7 @@ paths:
   '/tenants/{tenantId}/changes':
     get:
       tags:
-        - Changes Logs
+        - Change Logs
       operationId: GetAllChangesByTenantAsync
       parameters:
         - name: tenantId
