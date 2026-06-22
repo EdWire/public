@@ -49076,6 +49076,7 @@ components:
         - Scoring
         - Html
         - Image
+        - Checkbox
       type: string
     FormApi.Questions.V1.QuestionUpdatedResponse:
       type: object
