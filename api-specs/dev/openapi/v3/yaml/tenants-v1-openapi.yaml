@@ -7902,6 +7902,9 @@ components:
         importSectionAndCourseData:
           type: boolean
           nullable: true
+        useStaffEdOrgContactAssociationForEmails:
+          type: boolean
+          nullable: true
       additionalProperties: false
     DataSyncApi.EdFiRosterSync.V1.EdFiRosterSyncJobProvider:
       enum:
@@ -8636,6 +8639,8 @@ components:
         use_SSA_InsteadOf_SEOAA:
           $ref: '#/components/schemas/DataSyncApi.EdFiRosterSync.V1.Use_SSA_InsteadOf_SEOAA_Options'
         importSectionAndCourseData:
+          type: boolean
+        useStaffEdOrgContactAssociationForEmails:
           type: boolean
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.EdFiRosterSync.JobCreatedResult:
