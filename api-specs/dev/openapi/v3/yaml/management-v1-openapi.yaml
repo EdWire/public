@@ -1551,126 +1551,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-  '/tenants/{tenantId}/applications/{applicationId}/onboarding':
-    get:
-      tags:
-        - Applications
-      summary: Retrieves the onboarding settings for an application within a tenant.
-      operationId: GetApplicationOnboardingAsync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-        - name: applicationId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingResponse'
-        '404':
-          description: The resource could not be found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-    put:
-      tags:
-        - Applications
-      summary: Sets the onboarding settings for an application within a tenant if not already configured.
-      operationId: UpdateApplicationOnboardingAsync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-        - name: applicationId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: ''
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The onboarding settings were successfully applied.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingResponse'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-        '404':
-          description: The resource could not be found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/authorizationResources/{authorizationResourceId}':
     delete:
       tags:
@@ -13094,217 +12974,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-  '/tenants/{tenantId}/jobs/onerostersync/execute':
-    post:
-      tags:
-        - Tenant / OneRoster Sync
-      summary: Executes a OneRoster Sync Job
-      operationId: ExecuteOneRosterSyncJob
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataSyncApi.Job.V1.JobExecutionRequestedResponse'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-  '/tenants/{tenantId}/jobs/onerostersync':
-    get:
-      tags:
-        - Tenant / OneRoster Sync
-      summary: Retrieves a OneRoster Sync Job for a given tenant
-      operationId: GetOneRosterSyncData
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DataSyncApi.OneRosterSync.V1.OneRosterSyncJobProfile'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-    post:
-      tags:
-        - Tenant / OneRoster Sync
-      summary: Creates a OneRoster Sync Job for a given tenant
-      operationId: CreateOneRosterSync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: ''
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRequest'
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.JobCreatedResult'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-    put:
-      tags:
-        - Tenant / OneRoster Sync
-      summary: Updates a OneRoster Sync Job for a given tenant
-      operationId: UpdateOneRosterSync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        description: ''
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRequest'
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '204':
-          description: No Content
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.NoContentResult'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
   '/tenants/{tenantId}/jobs/partnership':
     get:
       tags:
@@ -16028,142 +15697,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-  '/tenants/{tenantId}/subscriptions/{subscriptionId}/onboarding/{stepNumber}':
-    put:
-      tags:
-        - Tenants
-      summary: Updates the status of a Tenant Subscription onboarding step
-      operationId: UpdateSubscriptionOnboardingStepAsync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: subscriptionId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-        - name: stepNumber
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: integer
-            format: int32
-      requestBody:
-        description: ''
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepRequest'
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepResponse'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-        '404':
-          description: The resource could not be found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-  '/tenants/{tenantId}/subscriptions/{subscriptionId}/onboarding':
-    get:
-      tags:
-        - Tenants
-      summary: Retrieves the onboarding progress for a Tenant Subscription
-      operationId: GetSubscriptionOnboardingAsync
-      parameters:
-        - name: tenantId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: subscriptionId
-          in: path
-          description: ''
-          required: true
-          schema:
-            type: string
-      responses:
-        '401':
-          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '403':
-          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '500':
-          description: An unhandled error occurred on the server.See the response body for details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-        '200':
-          description: The requested resource was successfully retrieved.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionOnboardingResponse'
-        '400':
-          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-        '404':
-          description: The resource could not be found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
   '/tenants/{tenantId}/subscriptions/{subscriptionId}/reject':
     put:
       tags:
@@ -20258,40 +19791,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    ApplicationApi.Application.V1.ApplicationOnboarding:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboardingStep'
-          nullable: true
-          readOnly: true
-      additionalProperties: false
-    ApplicationApi.Application.V1.ApplicationOnboardingResponse:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        applicationId:
-          type: string
-          nullable: true
-        onboarding:
-          $ref: '#/components/schemas/ApplicationApi.Application.V1.ApplicationOnboarding'
-      additionalProperties: false
-    ApplicationApi.Application.V1.ApplicationOnboardingStep:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int32
-        description:
-          type: string
-          nullable: true
-      additionalProperties: false
     ApplicationApi.Application.V1.ApplicationProfileResponse:
       type: object
       properties:
@@ -22203,67 +21702,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    DataSyncApi.OneRosterSync.V1.OneRosterMapping:
-      type: object
-      properties:
-        oneRosterRole:
-          type: string
-          nullable: true
-        edgraphNamespace:
-          type: string
-          nullable: true
-        edgraphRole:
-          type: string
-          nullable: true
-      additionalProperties: false
-    DataSyncApi.OneRosterSync.V1.OneRosterSyncJobProfile:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        type:
-          $ref: '#/components/schemas/DataSyncApi.OneRosterSync.V1.SynchronizationType'
-        oneRosterVersion:
-          type: string
-          nullable: true
-        sftpServer:
-          type: string
-          nullable: true
-        sftpDirectory:
-          type: string
-          nullable: true
-        sftpPort:
-          type: string
-          nullable: true
-        sftpUsername:
-          type: string
-          nullable: true
-        sftpPassword:
-          type: string
-          nullable: true
-        oneRosterMappings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSyncApi.OneRosterSync.V1.OneRosterMapping'
-          nullable: true
-          readOnly: true
-        enabled:
-          type: boolean
-          nullable: true
-        jobId:
-          type: string
-          nullable: true
-        sftpFileName:
-          type: string
-          nullable: true
-      additionalProperties: false
-    DataSyncApi.OneRosterSync.V1.SynchronizationType:
-      enum:
-        - Unknown
-        - CsvBundle
-        - Api
-      type: string
     DataSyncApi.PartnershipSync.V1.PartnershipSyncJobProfile:
       type: object
       properties:
@@ -23987,14 +23425,6 @@ components:
           nullable: true
         mfaCompleted:
           type: boolean
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
       additionalProperties: false
     EdGraph.HttpAggregators.Management.Api.Controllers.v1.ViewModels.Responses.UserTenant:
       type: object
@@ -24686,119 +24116,6 @@ components:
           type: string
           nullable: true
         identity:
-          type: string
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRequest:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          format: uuid
-        oneRosterVersion:
-          type: string
-          nullable: true
-        synchronizationType:
-          $ref: '#/components/schemas/DataSyncApi.OneRosterSync.V1.SynchronizationType'
-        sftpServer:
-          type: string
-          nullable: true
-        sftpDirectory:
-          type: string
-          nullable: true
-        sftpPort:
-          type: string
-          nullable: true
-        sftpUsername:
-          type: string
-          nullable: true
-        sftpPassword:
-          type: string
-          nullable: true
-        sftpFileName:
-          type: string
-          nullable: true
-        enabled:
-          type: boolean
-        roleMappings:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRoleMappingRequest'
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.CreateOneRosterSyncJobRoleMappingRequest:
-      type: object
-      properties:
-        role:
-          type: string
-          nullable: true
-        edGraphNamespace:
-          type: string
-          nullable: true
-        edGraphRole:
-          type: string
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.JobCreatedResult:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        jobId:
-          type: string
-          nullable: true
-        connectionId:
-          type: string
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRequest:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          format: uuid
-        oneRosterVersion:
-          type: string
-          nullable: true
-        synchronizationType:
-          $ref: '#/components/schemas/DataSyncApi.OneRosterSync.V1.SynchronizationType'
-        sftpServer:
-          type: string
-          nullable: true
-        sftpDirectory:
-          type: string
-          nullable: true
-        sftpPort:
-          type: string
-          nullable: true
-        sftpUsername:
-          type: string
-          nullable: true
-        sftpPassword:
-          type: string
-          nullable: true
-        sftpFileName:
-          type: string
-          nullable: true
-        enabled:
-          type: boolean
-        roleMappings:
-          type: array
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRoleMappingRequest'
-          nullable: true
-      additionalProperties: false
-    EdGraph.HttpAggregators.Management.Api.Services.OneRosterSync.UpdateOneRosterSyncJobRoleMappingRequest:
-      type: object
-      properties:
-        role:
-          type: string
-          nullable: true
-        edGraphNamespace:
-          type: string
-          nullable: true
-        edGraphRole:
           type: string
           nullable: true
       additionalProperties: false
@@ -28488,14 +27805,6 @@ components:
         organizationName:
           type: string
           nullable: true
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
       additionalProperties: false
     IdentityApi.User.V1.TenantEducationOrganizationMetrics:
       type: object
@@ -28717,14 +28026,6 @@ components:
           nullable: true
         mfaCompleted:
           type: boolean
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
       additionalProperties: false
     IdentityApi.User.V1.UserListResponsePaginatedItemsViewModel:
       type: object
@@ -28847,14 +28148,6 @@ components:
         platformRole:
           type: string
           nullable: true
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
-          type: string
-          nullable: true
       additionalProperties: false
     IdentityApi.User.V1.UserTenantStatusProfile:
       type: object
@@ -28874,8 +28167,6 @@ components:
         status:
           type: string
           nullable: true
-        isDeleted:
-          type: boolean
         platformRole:
           type: string
           nullable: true
@@ -29134,20 +28425,6 @@ components:
         mfaCompleted:
           type: boolean
         platformRole:
-          type: string
-          nullable: true
-        tenantStatus:
-          type: string
-          nullable: true
-        tenantAdmin:
-          type: boolean
-          nullable: true
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          type: string
-          nullable: true
-        deletedBy:
           type: string
           nullable: true
       additionalProperties: false
@@ -31295,69 +30572,6 @@ components:
             $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionListResponse'
           nullable: true
       additionalProperties: false
-    TenantApi.Tenant.V1.SubscriptionOnboarding:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        subscriptionId:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        progressPercentage:
-          type: number
-          format: float
-        totalSteps:
-          type: integer
-          format: int32
-        lastCompletedStep:
-          type: integer
-          format: int32
-          nullable: true
-        startedAt:
-          type: string
-          nullable: true
-        completedAt:
-          type: string
-          nullable: true
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionOnboardingStep'
-          nullable: true
-          readOnly: true
-      additionalProperties: false
-    TenantApi.Tenant.V1.SubscriptionOnboardingResponse:
-      type: object
-      properties:
-        onboarding:
-          $ref: '#/components/schemas/TenantApi.Tenant.V1.SubscriptionOnboarding'
-      additionalProperties: false
-    TenantApi.Tenant.V1.SubscriptionOnboardingStep:
-      type: object
-      properties:
-        number:
-          type: integer
-          format: int32
-        description:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        startedAt:
-          type: string
-          nullable: true
-        completedAt:
-          type: string
-          nullable: true
-        details:
-          type: string
-          nullable: true
-      additionalProperties: false
     TenantApi.Tenant.V1.SubscriptionProfileResponse:
       type: object
       properties:
@@ -31902,38 +31116,6 @@ components:
           nullable: true
         includeInJwt:
           type: boolean
-      additionalProperties: false
-    TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepRequest:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        subscriptionId:
-          type: string
-          nullable: true
-        number:
-          type: integer
-          format: int32
-        status:
-          type: string
-          nullable: true
-        details:
-          type: string
-          nullable: true
-      additionalProperties: false
-    TenantApi.Tenant.V1.UpdateSubscriptionOnboardingStepResponse:
-      type: object
-      properties:
-        tenantId:
-          type: string
-          nullable: true
-        subscriptionId:
-          type: string
-          nullable: true
-        number:
-          type: integer
-          format: int32
       additionalProperties: false
     TenantApi.Tenant.V1.UpdateSubscriptionRequest:
       type: object
