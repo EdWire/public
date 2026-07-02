@@ -35967,7 +35967,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-  '/students/{tenantId}/{studentId}/contacts':
+  '/tenants/{tenantId}/{studentId}/contacts':
     put:
       tags:
         - v1
@@ -36016,7 +36016,7 @@ paths:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '204':
           description: The resource was successfully updated.
-  '/students/{tenantId}/students/{id}':
+  '/tenants/{tenantId}/students/{id}':
     get:
       tags:
         - v1
@@ -36055,7 +36055,7 @@ paths:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
         '200':
           description: The requested resource was successfully retrieved.
-  '/students/{tenantId}':
+  '/tenants/{tenantId}/students':
     get:
       tags:
         - v1
