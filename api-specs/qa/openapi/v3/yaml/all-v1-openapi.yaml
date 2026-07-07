@@ -42058,6 +42058,8 @@ components:
           items:
             type: string
           nullable: true
+        ignoreOrganization:
+          type: boolean
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationResponse:
       type: object
@@ -42089,6 +42091,8 @@ components:
           items:
             type: string
           nullable: true
+        ignoreOrganization:
+          type: boolean
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest:
       type: object
@@ -47934,6 +47938,9 @@ components:
             type: string
           nullable: true
           readOnly: true
+        ignoreOrganization:
+          type: boolean
+          nullable: true
       additionalProperties: false
       description: Role Personas
     EvaluationApi.EvaluationSettings.V1.ScheduleType:
