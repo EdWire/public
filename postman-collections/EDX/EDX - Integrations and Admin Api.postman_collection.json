@@ -1,0 +1,1041 @@
+{
+  "info": {
+    "_postman_id": "388ad61d-29a0-4021-af69-b789c7f328b6",
+    "name": "EDX - Integrations and Admin Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24977079",
+    "_collection_link": "https://go.postman.co/collection/24977079-388ad61d-29a0-4021-af69-b789c7f328b6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Integrations API",
+      "item": [
+        {
+          "name": "Types",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/types",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "types"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"id\": \"{{TypeId}}\",\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/types/:integrationTypeId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "types",
+                    ":integrationTypeId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationTypeId",
+                      "value": "{{TypeId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Search",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/types?pageIndex=0&pageSize=10",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "types"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": null,
+                      "disabled": true
+                    },
+                    {
+                      "key": "filter",
+                      "value": null,
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/types/:integrationTypeId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "types",
+                    ":integrationTypeId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationTypeId",
+                      "value": "{{TypeId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/types/:integrationTypeId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "types",
+                    ":integrationTypeId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationTypeId",
+                      "value": "{{TypeId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Vendors",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"integrationTypeIds\": [],\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/vendors",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "vendors"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"id\": \"{{VendorId}}\",\r\n    \"integrationTypeIds\": [\r\n        \"{{TypeId}}\"\r\n    ],\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/vendors/:integrationVendorId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "vendors",
+                    ":integrationVendorId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationVendorId",
+                      "value": "{{VendorId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Search",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/vendors?pageIndex=0&pageSize=10",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "vendors"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": null,
+                      "disabled": true
+                    },
+                    {
+                      "key": "filter",
+                      "value": null,
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/vendors/:integrationVendorId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "vendors",
+                    ":integrationVendorId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationVendorId",
+                      "value": "{{VendorId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/vendors/:integrationVendorId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "vendors",
+                    ":integrationVendorId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationVendorId",
+                      "value": "{{VendorId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"integrationTypeId\": \"{{TypeId}}\",\r\n    \"integrationVendorId\": \"{{VendorId}}\",\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/products",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"\",\r\n    \"description\": \"\",\r\n    \"id\": \"{{ProductId}}\",\r\n    \"integrationTypeId\": \"{{TypeId}}\",\r\n    \"integrationVendorId\": \"{{VendorId}}\",\r\n    \"name\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/products/:integrationProductId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "products",
+                    ":integrationProductId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationProductId",
+                      "value": "{{ProductId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Search",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/products?pageIndex=0&pageSize=10",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": null,
+                      "disabled": true
+                    },
+                    {
+                      "key": "filter",
+                      "value": null,
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Id",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"Tyler SIS\",\r\n    \"description\": \"A Student Information System managed by Tyler Technologies.\",\r\n    \"id\": \"{{IntegrationProductId}}\",\r\n    \"integrationTypeId\": \"{{IntegrationTypeId}}\",\r\n    \"integrationVendorId\": \"{{IntegrationVendorId}}\",\r\n    \"name\": \"Tyler SIS\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/products/:integrationProductId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "products",
+                    ":integrationProductId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationProductId",
+                      "value": "{{ProductId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{BaseUrl}}/integrations/products/:integrationProductId",
+                  "host": [
+                    "{{BaseUrl}}"
+                  ],
+                  "path": [
+                    "integrations",
+                    "products",
+                    ":integrationProductId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "integrationProductId",
+                      "value": "{{ProductId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"integrationProductId\": \"{{ProductId}}\",\r\n    \"integrationTypeId\": \"{{TypeId}}\",\r\n    \"integrationVendorId\": \"{{VendorId}}\",\r\n    \"tenantId\": \"\",\r\n    \"version\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/:tenantId/integrations",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "integrations"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"\",\r\n    \"tenantId\": \"\",\r\n    \"integrationProductId\": \"{{ProductId}}\",\r\n    \"integrationTypeId\": \"{{TypeId}}\",\r\n    \"integrationVendorId\": \"{{VendorId}}\",\r\n    \"version\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/:tenantId/integrations/:integrationId",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "integrations",
+                ":integrationId"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                },
+                {
+                  "key": "integrationId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/:tenantId/integrations/:integrationId",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "integrations",
+                ":integrationId"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                },
+                {
+                  "key": "integrationId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/:tenantId/integrations/:integrationId",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "integrations",
+                ":integrationId"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                },
+                {
+                  "key": "integrationId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseUrl}}/tenants/:tenantId/integrations?pageIndex=0&pageSize=10",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "integrations"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "orderBy",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "filter",
+                  "value": null,
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Schema Types",
+      "item": [
+        {
+          "name": "Global",
+          "item": [
+            {
+              "name": "Get Schema Types",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{jwt}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{ManagementBaseUrl}}/schematypes",
+                  "host": [
+                    "{{ManagementBaseUrl}}"
+                  ],
+                  "path": [
+                    "schematypes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Schoology Instance Schema",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{jwt}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"provider\": \"Schoology\",\r\n    \"code\": \"SchoologyApiClient\",\r\n    \"name\": \"Schoology API Client\",\r\n    \"description\": \"This holds the instance information for an Schoology API Client\",\r\n    \"schemaVersion\": \"1.0\",\r\n    \"schema\": {\r\n        \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\r\n        \"title\": \"Generated Schema\",\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"baseUrl\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uri\"\r\n            },\r\n            \"authorizationUrl\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uri\"\r\n            },\r\n            \"schoolYears\": {\r\n                \"type\": \"array\",\r\n                \"items\": {\r\n                    \"type\": \"integer\"\r\n                }\r\n            },\r\n            \"credentialId\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uuid\"\r\n            },\r\n            \"connectionType\": {\r\n                \"type\": \"string\"\r\n            }\r\n        },\r\n        \"required\": [\r\n            \"baseUrl\",\r\n            \"authorizationUrl\",\r\n            \"schoolYears\",\r\n            \"credentialId\",\r\n            \"connectionType\"\r\n        ]\r\n    },\r\n    \"tags\": [\r\n        \"Instance\"\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ManagementBaseUrl}}/schematypes",
+                  "host": [
+                    "{{ManagementBaseUrl}}"
+                  ],
+                  "path": [
+                    "schematypes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Schoology Api Client Credential Schema",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"ApiClient\",\r\n    \"description\": \"This holds the credentials for an Schoology API Client\",\r\n    \"name\": \"Schoology API Client Credentials\",\r\n    \"provider\": \"Schoology\",\r\n    \"schema\": {\r\n        \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\r\n        \"title\": \"Generated Schema\",\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"clientKey\": {\r\n                \"type\": \"string\"\r\n            },\r\n            \"clientSecret\": {\r\n                \"type\": \"string\",\r\n                \"$egSecret\": true\r\n            }\r\n        },\r\n        \"required\": [\r\n            \"clientKey\",\r\n            \"clientSecret\"\r\n        ]\r\n    },\r\n    \"schemaVersion\": \"1.0\",\r\n    \"tags\": [\r\n        \"Credential\"\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ManagementBaseUrl}}/schematypes",
+                  "host": [
+                    "{{ManagementBaseUrl}}"
+                  ],
+                  "path": [
+                    "schematypes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tenant Specific",
+          "item": [
+            {
+              "name": "Create Schoology Instance",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{jwt}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"provider\": \"Schoology\",\r\n    \"code\": \"SchoologyApiClient\",\r\n    \"name\": \"Schoology API Client\",\r\n    \"description\": \"This holds the instance information for an Schoology API Client\",\r\n    \"schemaVersion\": \"1.0\",\r\n    \"schema\": {\r\n        \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\r\n        \"title\": \"Generated Schema\",\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"baseUrl\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uri\"\r\n            },\r\n            \"authorizationUrl\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uri\"\r\n            },\r\n            \"schoolYears\": {\r\n                \"type\": \"array\",\r\n                \"items\": {\r\n                    \"type\": \"integer\"\r\n                }\r\n            },\r\n            \"credentialId\": {\r\n                \"type\": \"string\",\r\n                \"format\": \"uuid\"\r\n            },\r\n            \"connectionType\": {\r\n                \"type\": \"string\"\r\n            }\r\n        },\r\n        \"required\": [\r\n            \"baseUrl\",\r\n            \"authorizationUrl\",\r\n            \"schoolYears\",\r\n            \"credentialId\",\r\n            \"connectionType\"\r\n        ]\r\n    },\r\n    \"tags\": [\r\n        \"Instance\"\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ManagementBaseUrl}}/tenants/:tenantId/schematypes",
+                  "host": [
+                    "{{ManagementBaseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    ":tenantId",
+                    "schematypes"
+                  ],
+                  "variable": [
+                    {
+                      "key": "tenantId",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Api Client",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"code\": \"ApiClient\",\r\n    \"description\": \"This holds the credentials for an Schoology API Client\",\r\n    \"name\": \"Schoology API Client Credentials\",\r\n    \"provider\": \"Schoology\",\r\n    \"schema\": {\r\n        \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\r\n        \"title\": \"Generated Schema\",\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n            \"clientKey\": {\r\n                \"type\": \"string\"\r\n            },\r\n            \"clientSecret\": {\r\n                \"type\": \"string\",\r\n                \"$egSecret\": true\r\n            }\r\n        },\r\n        \"required\": [\r\n            \"clientKey\",\r\n            \"clientSecret\"\r\n        ]\r\n    },\r\n    \"schemaVersion\": \"1.0\",\r\n    \"tags\": [\r\n        \"Credential\"\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{ManagementBaseUrl}}/tenants/:tenantId/schematypes",
+                  "host": [
+                    "{{ManagementBaseUrl}}"
+                  ],
+                  "path": [
+                    "tenants",
+                    ":tenantId",
+                    "schematypes"
+                  ],
+                  "variable": [
+                    {
+                      "key": "tenantId",
+                      "value": "{{TenantId}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{ManagementBaseUrl}}/tenants/:tenantId/schematypes/:schemaTypeId",
+              "host": [
+                "{{ManagementBaseUrl}}"
+              ],
+              "path": [
+                "tenants",
+                ":tenantId",
+                "schematypes",
+                ":schemaTypeId"
+              ],
+              "variable": [
+                {
+                  "key": "tenantId",
+                  "value": ""
+                },
+                {
+                  "key": "schemaTypeId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Get Ed-Fi Discovery Information",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"baseUrl\": \"\"\r\n}"
+        },
+        "url": {
+          "raw": "{{ManagementBaseUrl}}/tenants/:tenantId/instances/edfi-api-metadata",
+          "host": [
+            "{{ManagementBaseUrl}}"
+          ],
+          "path": [
+            "tenants",
+            ":tenantId",
+            "instances",
+            "edfi-api-metadata"
+          ],
+          "variable": [
+            {
+              "key": "tenantId",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Instances - V2",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt}}"
+          }
+        ],
+        "url": {
+          "raw": "{{ManagementBaseUrl}}/v2/tenants/:tenantId/instances?pageIndex=0&pageSize=1000",
+          "host": [
+            "{{ManagementBaseUrl}}"
+          ],
+          "path": [
+            "v2",
+            "tenants",
+            ":tenantId",
+            "instances"
+          ],
+          "query": [
+            {
+              "key": "pageIndex",
+              "value": "0"
+            },
+            {
+              "key": "pageSize",
+              "value": "1000"
+            },
+            {
+              "key": "orderBy",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "type",
+              "value": "Edfi",
+              "description": "Filtering by InstanceType isn't working at the moment",
+              "disabled": true
+            },
+            {
+              "key": "filter",
+              "value": "provider eq \"TexasEducationExchange\"",
+              "disabled": true
+            },
+            {
+              "key": "filter",
+              "value": "",
+              "disabled": true
+            }
+          ],
+          "variable": [
+            {
+              "key": "tenantId",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Instance By Id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt}}"
+          }
+        ],
+        "url": {
+          "raw": "{{ManagementBaseUrl}}/tenants/:tenantId/instances/:instanceId",
+          "host": [
+            "{{ManagementBaseUrl}}"
+          ],
+          "path": [
+            "tenants",
+            ":tenantId",
+            "instances",
+            ":instanceId"
+          ],
+          "variable": [
+            {
+              "key": "tenantId",
+              "value": ""
+            },
+            {
+              "key": "instanceId",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "BaseUrl",
+      "value": ""
+    },
+    {
+      "key": "TypeId",
+      "value": ""
+    },
+    {
+      "key": "VendorId",
+      "value": ""
+    },
+    {
+      "key": "ProductId",
+      "value": ""
+    },
+    {
+      "key": "ManagementBaseUrl",
+      "value": ""
+    }
+  ]
+}
