@@ -31164,7 +31164,7 @@ components:
       type: object
       properties:
         value:
-          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
       additionalProperties: false
     SettingsApi.Settings.V1.SearchSettingTypesResponse:
       type: object
@@ -31226,7 +31226,7 @@ components:
           type: string
           nullable: true
         value:
-          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
         createdBy:
           type: string
           nullable: true
