@@ -38751,6 +38751,9 @@ components:
         useStaffEdOrgContactAssociationForEmails:
           type: boolean
           nullable: true
+        ignoreEndDates:
+          type: boolean
+          nullable: true
       additionalProperties: false
     DataSyncApi.EdFiRosterSync.V1.EdFiRosterSyncJobProvider:
       enum:
@@ -41514,6 +41517,8 @@ components:
         importSectionAndCourseData:
           type: boolean
         useStaffEdOrgContactAssociationForEmails:
+          type: boolean
+        ignoreEndDates:
           type: boolean
       additionalProperties: false
     EdGraph.HttpAggregators.Tenant.Api.Services.EdFiRosterSync.JobCreatedResult:
