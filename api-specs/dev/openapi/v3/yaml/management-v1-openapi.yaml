@@ -6924,6 +6924,79 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+  '/clients/{clientId}/branding':
+    put:
+      tags:
+        - OpenId Clients / Branding
+      summary: 'Updates the branding of an OpenId client, shown on the sign-in page.'
+      operationId: UpdateClientBranding
+      parameters:
+        - name: clientId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                LogoFile:
+                  type: string
+                  format: binary
+                BackgroundFile:
+                  type: string
+                  format: binary
+                BrandName:
+                  type: string
+                Enabled:
+                  type: boolean
+                AllowTenantToOverride:
+                  type: boolean
+            encoding:
+              LogoFile:
+                style: form
+              BackgroundFile:
+                style: form
+              BrandName:
+                style: form
+              Enabled:
+                style: form
+              AllowTenantToOverride:
+                style: form
+      responses:
+        '401':
+          description: Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '403':
+          description: Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '500':
+          description: An unhandled error occurred on the server.See the response body for details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+        '200':
+          description: The requested resource was successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.Client.V1.ClientBrandingUpdatedResponse'
+        '400':
+          description: Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
   '/clients/{clientId}/secrets/{secretId}':
     delete:
       tags:
@@ -27861,6 +27934,56 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    IdentityApi.Client.V1.ClientBrandingBackground:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        blobName:
+          type: string
+          nullable: true
+        containerName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    IdentityApi.Client.V1.ClientBrandingLogo:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        blobName:
+          type: string
+          nullable: true
+        containerName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    IdentityApi.Client.V1.ClientBrandingResponse:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          nullable: true
+        brandName:
+          type: string
+          nullable: true
+        logo:
+          $ref: '#/components/schemas/IdentityApi.Client.V1.ClientBrandingLogo'
+        background:
+          $ref: '#/components/schemas/IdentityApi.Client.V1.ClientBrandingBackground'
+      additionalProperties: false
+    IdentityApi.Client.V1.ClientBrandingUpdatedResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+          nullable: true
+        clientId:
+          type: string
+          nullable: true
+      additionalProperties: false
     IdentityApi.Client.V1.ClientCreatedResponse:
       type: object
       properties:
@@ -28051,6 +28174,10 @@ components:
         lastModifiedDateTime:
           type: string
           nullable: true
+        branding:
+          $ref: '#/components/schemas/IdentityApi.Client.V1.ClientBrandingResponse'
+        allowTenantToOverride:
+          type: boolean
       additionalProperties: false
     IdentityApi.Client.V1.ClientSecretAddedResponse:
       type: object
