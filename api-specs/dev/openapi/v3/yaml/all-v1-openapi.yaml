@@ -32840,6 +32840,10 @@ paths:
                   type: string
                 Enabled:
                   type: boolean
+                RemoveBackground:
+                  type: boolean
+                RemoveLogo:
+                  type: boolean
             encoding:
               LogoFile:
                 style: form
@@ -32848,6 +32852,10 @@ paths:
               BrandName:
                 style: form
               Enabled:
+                style: form
+              RemoveBackground:
+                style: form
+              RemoveLogo:
                 style: form
       responses:
         '401':
