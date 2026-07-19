@@ -6955,6 +6955,10 @@ paths:
                   type: boolean
                 AllowTenantToOverride:
                   type: boolean
+                RemoveBackground:
+                  type: boolean
+                RemoveLogo:
+                  type: boolean
             encoding:
               LogoFile:
                 style: form
@@ -6965,6 +6969,10 @@ paths:
               Enabled:
                 style: form
               AllowTenantToOverride:
+                style: form
+              RemoveBackground:
+                style: form
+              RemoveLogo:
                 style: form
       responses:
         '401':
