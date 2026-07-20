@@ -49744,6 +49744,17 @@ components:
         - Unknown
         - CurrentUserName
         - SectionPicker
+        - InfoCard
+        - InfoMessage
+        - Or
+        - VerificationCode
+        - DateDropdown
+        - Email
+        - Phone
+        - Number
+        - RadioCards
+        - CheckboxCards
+        - ContactVerification
       type: string
     FormApi.Forms.V1.AudienceType:
       enum:
