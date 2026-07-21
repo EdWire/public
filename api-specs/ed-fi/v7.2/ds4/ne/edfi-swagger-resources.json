@@ -13414,7 +13414,7 @@
         }
       }
     },
-    "/ne/crisisDetails": {
+    "/NE/crisisDetails": {
       "get": {
         "tags": [
           "crisisDetails"
@@ -13577,7 +13577,7 @@
         }
       }
     },
-    "/ne/crisisDetails/{id}": {
+    "/NE/crisisDetails/{id}": {
       "get": {
         "tags": [
           "crisisDetails"
@@ -13764,7 +13764,7 @@
         }
       }
     },
-    "/ne/crisisDetails/deletes": {
+    "/NE/crisisDetails/deletes": {
       "get": {
         "tags": [
           "crisisDetails"
@@ -13833,7 +13833,7 @@
         }
       }
     },
-    "/ne/crisisDetails/keyChanges": {
+    "/NE/crisisDetails/keyChanges": {
       "get": {
         "tags": [
           "crisisDetails"
@@ -38641,7 +38641,7 @@
         }
       }
     },
-    "/ne/postGraduateActivities": {
+    "/NE/postGraduateActivities": {
       "get": {
         "tags": [
           "postGraduateActivities"
@@ -38815,7 +38815,7 @@
         }
       }
     },
-    "/ne/postGraduateActivities/{id}": {
+    "/NE/postGraduateActivities/{id}": {
       "get": {
         "tags": [
           "postGraduateActivities"
@@ -39002,7 +39002,7 @@
         }
       }
     },
-    "/ne/postGraduateActivities/deletes": {
+    "/NE/postGraduateActivities/deletes": {
       "get": {
         "tags": [
           "postGraduateActivities"
@@ -39071,7 +39071,7 @@
         }
       }
     },
-    "/ne/postGraduateActivities/keyChanges": {
+    "/NE/postGraduateActivities/keyChanges": {
       "get": {
         "tags": [
           "postGraduateActivities"
@@ -59611,7 +59611,7 @@
         }
       }
     },
-    "/ne/studentEarlyLearningProgramAssociations": {
+    "/NE/studentEarlyLearningProgramAssociations": {
       "get": {
         "tags": [
           "studentEarlyLearningProgramAssociations"
@@ -59806,7 +59806,7 @@
         }
       }
     },
-    "/ne/studentEarlyLearningProgramAssociations/{id}": {
+    "/NE/studentEarlyLearningProgramAssociations/{id}": {
       "get": {
         "tags": [
           "studentEarlyLearningProgramAssociations"
@@ -59993,7 +59993,7 @@
         }
       }
     },
-    "/ne/studentEarlyLearningProgramAssociations/deletes": {
+    "/NE/studentEarlyLearningProgramAssociations/deletes": {
       "get": {
         "tags": [
           "studentEarlyLearningProgramAssociations"
@@ -60062,7 +60062,7 @@
         }
       }
     },
-    "/ne/studentEarlyLearningProgramAssociations/keyChanges": {
+    "/NE/studentEarlyLearningProgramAssociations/keyChanges": {
       "get": {
         "tags": [
           "studentEarlyLearningProgramAssociations"
